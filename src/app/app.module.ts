@@ -27,6 +27,7 @@ import { TipoAssuntoPipe } from './pipes/tipo-assunto.pipe';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { PerfilPessoalComponent } from './pages/perfil-pessoal/perfil-pessoal.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 
 
 
@@ -46,7 +47,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     SearchAssuntosOnlyComponent,
     TipoAssuntoPipe,
     PerfilPessoalComponent,
-    ChatComponent
+    ChatComponent,
+    DenunciaComponent
    
   ],
     imports: [

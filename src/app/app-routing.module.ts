@@ -8,6 +8,7 @@ import { SearchAssuntosOnlyComponent } from './pages/search-assuntosonly/search-
 import { EditarperfilComponent } from './pages/editarperfil/editarperfil.component';
 import { PerfilPessoalComponent } from './pages/perfil-pessoal/perfil-pessoal.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 const routes: Routes = [
 
     {path:"inicio", component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path:"", component: InicialComponent},
     {path:"perfil/:id", component: PerfilPessoalComponent},
     {path:"chat", component: ChatComponent},
+    {path:"denuncia", component: DenunciaComponent},
    
 ];
 
