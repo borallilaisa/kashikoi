@@ -1,0 +1,47 @@
+.mensagens{
+  height: 300px;
+  margin-top: 10px;
+}
+
+.mensagens > .row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.msg {
+  width:100%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.msg.enviada{
+  background-color:#DD6600;
+  color: #FFE9CA;
+}
+
+.msg.recebida{
+  background-color:#FFE9CA;
+}
+
+.textoMensagem{
+  margin: 5px;
+}
+
+.infoUsuario{
+  border-color:rgb(221, 102, 0);
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+.userChat{
+  font-size: 22px !important;
+  color: rgb(221, 102, 0);
+  font-weight: bold;
+  right:2px;
+  position:relative;
+}
+.userChatImg{
+  border-radius:30%;
+  right:2px;
+  position:relative;
+}
