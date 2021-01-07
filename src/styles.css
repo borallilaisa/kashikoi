@@ -76,6 +76,7 @@ label.login-box{
     background-color: #FDFCFB;
      visibility: visible;
      position: relative;
+     margin: 0 auto;
 }
 
 
@@ -92,6 +93,7 @@ label.login-box{
     background-color: #007972;
     position: relative;
    display: inline-block;
+  
 
 }
 
@@ -115,7 +117,7 @@ label.login-box{
     position: relative;
     margin-top: 10px;
     margin-right: 100px;
-
+    
 
 
 }
@@ -129,6 +131,8 @@ label.login-box{
     margin-left: 40px;
     font-weight: bold;
     max-width: 350px;
+    margin: 10px;
+    position: relative;
 }
 
 .register-title-box{
@@ -143,7 +147,7 @@ label.login-box{
     position: relative;
     margin-top: 10px;
     margin-right: 100px;
-
+   
 
 
 }
@@ -157,6 +161,8 @@ label.login-box{
     margin-left: 40px;
     font-weight: bold;
     max-width: 350px;
+    position: relative;
+    margin: 4px;
 }
 
 

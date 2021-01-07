@@ -28,6 +28,7 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { PerfilPessoalComponent } from './pages/perfil-pessoal/perfil-pessoal.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
+import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.component';
 
 
 
@@ -48,7 +49,8 @@ import { DenunciaComponent } from './pages/denuncia/denuncia.component';
     TipoAssuntoPipe,
     PerfilPessoalComponent,
     ChatComponent,
-    DenunciaComponent
+    DenunciaComponent,
+    RecuperarsenhaComponent
    
   ],
     imports: [
