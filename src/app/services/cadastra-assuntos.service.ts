@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {environment} from '../environments/environment';
-import { NgxLoadingModule} from 'ngx-loading';
-import { ngxLoadingAnimationTypes} from 'ngx-loading';
 import { UserServiceService } from './user-service.service';
 
 @Injectable({
@@ -17,10 +15,10 @@ export class CadastraAssuntosService {
     let user:any = this.userService.getAuthUser();
 
     return new Promise((resolve, reject) => {
-     
+
       this.http.post( `${environment.appUrl}/assunto/store?token=${user.token}`, assuntos)
         .subscribe((data:any) => resolve(data), (err:any) => reject(err));
-      
+
     })
   }
 }

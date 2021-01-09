@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../services/user-service.service';
-import { Router } from '@angular/router';  
-import { Login } from 'src/app/interfaces/login';  
-import { AuthService } from '../../services/auth.service'; 
-import { ValidationService } from '../../services/validation.service'; 
+import { Router } from '@angular/router';
+import { Login } from 'src/app/interfaces/login';
+import { AuthService } from '../../services/auth.service';
+import { ValidationService } from '../../services/validation.service';
 
 import * as $ from 'jquery';
 
@@ -19,32 +19,32 @@ export class InicialComponent implements OnInit {
   open:boolean = false;
   errors:any = []
   user:any = { email: "admin", senha: "admin@123" };
-  message: string;  
+  message: string;
   public loading = false;
-  
-  constructor(public userService: UserServiceService, 
-              public router : Router,  
+
+  constructor(public userService: UserServiceService,
+              public router : Router,
               public validation: ValidationService,
-              private authService : AuthService) { 
+              private authService : AuthService) {
       if(window.localStorage.getItem('user')) {
         console.log(window.localStorage.getItem('user'));
       }
   };
-  
+
   ngOnInit(): void {
-     
-      
+
+
   }
 
   login() {
     this.loading = true;
     this.validationRegister(this.user, true).then((data:any) => {
-      
+
         this.userService.login(this.user).then((data:any) => {
-          localStorage.setItem('isLoggedIn', "true");  
-          localStorage.setItem('user', JSON.stringify(data));  
+          localStorage.setItem('isLoggedIn', "true");
+          localStorage.setItem('user', JSON.stringify(data));
           this.loading = false;
-          this.router.navigate(['/inicio']);  
+          this.router.navigate(['/inicio']);
         }).catch((err:any) => {
             console.log(err);
             this.loading = false;
@@ -53,7 +53,7 @@ export class InicialComponent implements OnInit {
       alert('Erro ao efetuar login');
       this.loading = false;
     })
-  }  
+  }
 
   changeBox() {
 
@@ -92,9 +92,9 @@ export class InicialComponent implements OnInit {
            this.userService.register(user).then((data:any) => {
 
             localStorage.setItem('user', JSON.stringify(data));
-          
-            this.router.navigate(['/perfil']); 
-           
+
+            this.router.navigate(['/perfil']);
+
              //this.userLogin(user);
              this.loading = false;
 
@@ -111,13 +111,13 @@ export class InicialComponent implements OnInit {
                   $("#final-banner").css("min-height","900px;");
                   $("#userEmail").focus();
                 }
-              }, 200); 
+              }, 200);
       });
 
     }).catch((err:any) => {
       this.loading = false;
 
-      
+
       console.log(err);
 
     })
@@ -129,7 +129,7 @@ export class InicialComponent implements OnInit {
     this.validationRegister(user).then((data:any) => {
 
            this.userService.login(user).then((data:any) => {
-              
+
               window.localStorage.set('user', data);
 
               this.router.navigate(['/inicio']);
@@ -161,25 +161,25 @@ export class InicialComponent implements OnInit {
           this.errors.push("O campo senha não está preenchido! Verifique o campo e tente novamente.");
 
         if(!isLogin) {
-          
+
           if(!user.nome)
             this.errors.push("O campo nome não está preenchido! Verifique o campo e tente novamente.");
 
           if(user.senha != user.confirmasenha)
             this.errors.push("A senhas não são iguais.");
-            
+
         }
-      
-         if(!this.validation.passwordIsValid(user.senha))
+
+         /*if(!this.validation.passwordIsValid(user.senha))
           this.errors.push("A senha precisa ter no minimo 8 caracteres, sendo no minimo uma letra maiúscula, uma letra minuscula, um digito (0..9) e um carácter especial (@#$%^&+=)..");
-        
-      
+        */
+
           if(this.errors.length > 0) {
             $("#validateMessage").addClass('ativo');
             $("#final-banner").css("min-height","900px;");
             $("#userEmail").focus();
           }
-       
+
 
         setTimeout(() => this.errors.length == 0 ? resolve(user) : reject(user));
     })
