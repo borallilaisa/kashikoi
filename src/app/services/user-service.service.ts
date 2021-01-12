@@ -57,7 +57,7 @@ export class UserServiceService {
       return JSON.parse(window.localStorage.getItem('user'));
   }
 
-  
+
   getUserData() {
 
     let user:any = this.getAuthUser();
@@ -65,7 +65,7 @@ export class UserServiceService {
     return new Promise((resolve, reject) => {
       this.http.get( `${environment.appUrl}/user/editarusuario?token=${user.token}`)
         .subscribe((data:any) => resolve(data), (err:any) => reject(err));
-        
+
     })
 
   }
@@ -77,7 +77,7 @@ export class UserServiceService {
       let user:any = this.getAuthUser();
 
       this.http.post(`${environment.appUrl}/user/salvar-perfil?token=${user.token}`, aux_user).subscribe((data)=> {
-       
+
         resolve(data);
 
       }, (err) =>{
@@ -93,7 +93,7 @@ export class UserServiceService {
       let user:any = this.getAuthUser();
 
       this.http.post(`${environment.appUrl}/user/upload-foto?token=${user.token}`, {foto: photo}).subscribe((data)=> {
-       
+
         resolve(data);
 
       }, (err) =>{
@@ -133,6 +133,61 @@ export class UserServiceService {
       this.http.get(`${environment.appUrl}/user/${id}?token=${user.token}`)
       .subscribe((data:any) => resolve(data), err => reject(err))
     })
+  }
+
+
+
+  recoverPassword(email) {
+
+    return new Promise((resolve, reject) => {
+
+      this.http.post(`${environment.appUrl}/user/recuperar-senha`, {email: email})
+      .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+  }
+
+
+  savePassword(token, senha) {
+
+    return new Promise((resolve, reject) => {
+
+       this.http.post(`${environment.appUrl}/user/recuperar-senha-finalizar`, {token: token, senha: senha})
+      .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+  }
+
+  findUser(q) {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.getAuthUser();
+
+      this.http.get(`${environment.appUrl}/user/pesquisar?q=${q}&token=${user.token}`)
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
+
+  unblockUser(userid){
+   return new Promise((resolve, reject) => {
+
+     let user:any = this.getAuthUser();
+      this.http.post(`${environment.appUrl}/user/desbloquear-usuario?token=${user.token}`, {id: userid})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+  }
+
+  softDeleteUser(userid){
+
+    return new Promise((resolve, reject) => {
+      let user:any = this.getAuthUser();
+      this.http.post(`${environment.appUrl}/user/deletar-usuario?token=${user.token}`, {id: userid})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+
   }
 
 }

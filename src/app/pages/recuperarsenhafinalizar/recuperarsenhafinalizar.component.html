@@ -1,0 +1,40 @@
+<app-logged-menu>
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+    <div id="recuperarsenhafinalizar">
+        <br/>
+        <form (submit)="savePassword(user)">
+            <span class="title">Recuperar Senha</span>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-10 col-sm-10">
+                        <label for="novaSenha">Nova Senha:</label>
+                        <input type="password"  name="senha" [(ngModel)]="user.senha" class="form-control">
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="col-lg-10 col-sm-10">
+                        <label for="confirmarSenha">Confirmar Senha:</label>
+                        <input type="password" name="confirmarSenha" [(ngModel)]="user.confirmaSenha" class="form-control">
+                    </div>
+                </div>  
+               
+                <br/>
+                <div class="row">
+                    <div class="col-lg-10 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" *ngIf="errors.email && errors.email.length > 0">
+                    <strong *ngFor="let error of errors.email">{{ error }}</strong><br/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+ </app-logged-menu>
+
+

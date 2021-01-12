@@ -9,7 +9,11 @@ import { EditarperfilComponent } from './pages/editarperfil/editarperfil.compone
 import { PerfilPessoalComponent } from './pages/perfil-pessoal/perfil-pessoal.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
+import { PainelAdministrativoComponent } from './pages/adm/painel-administrativo/painel-administrativo.component';
 import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.component';
+import { RecuperarsenhafinalizarComponent } from './pages/recuperarsenhafinalizar/recuperarsenhafinalizar.component';
+import { ControlarUsuarioComponent } from './pages/adm/controlar-usuario/controlar-usuario.component';
+
 const routes: Routes = [
 
     {path:"inicio", component: HomeComponent},
@@ -19,7 +23,11 @@ const routes: Routes = [
     {path:"perfil/:id", component: PerfilPessoalComponent},
     {path:"chat", component: ChatComponent},
     {path:"denuncia", component: DenunciaComponent},
-    {path:"recuperarsenha", component: RecuperarsenhaComponent},
+    {path:"recuperar-senha", component: RecuperarsenhaComponent},
+    {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent},
+    {path:"adm", component: PainelAdministrativoComponent},
+    {path:"adm/usuarios", component: ControlarUsuarioComponent},
+
 ];
 
 @NgModule({

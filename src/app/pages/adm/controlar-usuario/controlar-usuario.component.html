@@ -1,0 +1,100 @@
+<app-painel-administrativo>
+    <div class="description">
+        <h3>
+            Usuários
+        </h3>
+    </div>
+    <!-- Navbar -->
+    <div class="listaUsuarios">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+         <div class="barraPesquisa">
+            <div class="row">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+                  <form>
+                    <div class="input-group no-border">
+                      <input type="text" value="" (keypress)="validateKeyPress($event)" class="form-control" name="q" [(ngModel)]="q" placeholder="Encontrar usuário...">
+                    </div>
+                  </form>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                  <button type="button" class="botaoIcone" (click)="searchUser(q)">
+                    <i class="nc-icon nc-zoom-split"></i>
+                  </button>
+
+                </div>
+
+            </div>
+            </div>
+         </div>
+        </div>
+
+         <div class="tabelaUsuarios inativo">
+            <div class="content">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card card-plain">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead class=" text-primary">
+                              <th>Id</th>
+                              <th>Nome</th>
+                              <th>Email</th>
+                              <th>Status</th>
+                              <th>Bloqueado Em</th>
+                              <th>Data de Cadastro</th>
+                              <th class="text-right">
+
+                              </th>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let usuario of usuarios">
+                                <td>
+                                  {{usuario.id}}
+                                </td>
+                                <td>
+                                  {{usuario.name}}
+                                </td>
+                                <td>
+                                  {{usuario.email}}
+                                </td>
+                                <td>
+                                  {{usuario.usuario_perfil ? usuario.usuario_perfil.status : ""}}
+                                </td>
+
+                                <td [ngClass]="{'blocked': usuario.deleted_at}">
+                                  {{usuario.deleted_at ? formatDate(usuario.deleted_at) : " "}}
+
+                                </td>
+                                <td>
+                                  {{usuario.usuario_perfil  ? formatDate(usuario.usuario_perfil.created_at) : " "}}
+
+                                </td>
+                                <td class="text-right">
+                                      <button type="button" rel="tooltip" title="desbloquear usuário" class="btn btn-success btn-icon btn-sm " (click)="desbloquearUsuario(usuario)">
+                                        <i class="nc-icon nc-single-02"></i>
+                                      </button>
+                                      <button type="button" rel="tooltip" title="excluir usuário" class="btn btn-danger btn-icon btn-sm " (click)="deletarUsuario(usuario)">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                      </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+         </div>
+     </div>
+
+
+
+
+
+
+
+</app-painel-administrativo>

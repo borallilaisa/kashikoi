@@ -10,14 +10,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { StarterpageComponent } from './pages/starterpage/starterpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
-import { AuthGuard } from './guards/auth.guard'; 
+import { AuthGuard } from './guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoggedInStarterPageComponent } from './pages/logged-in-starter-page/logged-in-starter-page.component';
 import { LoggedMenuComponent } from './layouts/logged-menu/logged-menu.component';
 import { SearchAssuntosComponent } from './pages/search-assuntos/search-assuntos.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import {MatChipsModule} from '@angular/material/chips'; 
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AssuntosPipe } from './pipes/assuntos.pipe';
 import { EditarperfilComponent } from './pages/editarperfil/editarperfil.component';
@@ -29,6 +29,14 @@ import { PerfilPessoalComponent } from './pages/perfil-pessoal/perfil-pessoal.co
 import { ChatComponent } from './pages/chat/chat.component';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.component';
+import { AjudaComponent } from './pages/ajuda/ajuda.component';
+import { SobreComponent } from './pages/sobre/sobre.component';
+import { RecuperarsenhafinalizarComponent } from './pages/recuperarsenhafinalizar/recuperarsenhafinalizar.component';
+import { PainelAdministrativoComponent } from './pages/adm/painel-administrativo/painel-administrativo.component';
+import { ControlarUsuarioComponent } from './pages/adm/controlar-usuario/controlar-usuario.component';
+import { ControlarAssuntoComponent } from './pages/adm/controlar-assunto/controlar-assunto.component';
+import { ControlarDenunciaComponent } from './pages/adm/controlar-denuncia/controlar-denuncia.component';
+import { CaixaDeContatoComponent } from './pages/adm/caixa-de-contato/caixa-de-contato.component';
 
 
 
@@ -50,13 +58,21 @@ import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.c
     PerfilPessoalComponent,
     ChatComponent,
     DenunciaComponent,
-    RecuperarsenhaComponent
-   
+    RecuperarsenhaComponent,
+    AjudaComponent,
+    SobreComponent,
+    RecuperarsenhafinalizarComponent,
+    PainelAdministrativoComponent,
+    ControlarUsuarioComponent,
+    ControlarAssuntoComponent,
+    ControlarDenunciaComponent,
+    CaixaDeContatoComponent
+
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule,//Add if needed 
+        ReactiveFormsModule,//Add if needed
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
@@ -66,13 +82,13 @@ import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.c
         BrMaskerModule,
         NgxLoadingModule.forRoot({
           animationType: ngxLoadingAnimationTypes.wanderingCubes,
-            backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+            backdropBackgroundColour: 'rgba(0,0,0,0.1)',
             backdropBorderRadius: '4px',
-            primaryColour: '#ffffff', 
-            secondaryColour: '#ffffff', 
+            primaryColour: '#ffffff',
+            secondaryColour: '#ffffff',
             tertiaryColour: '#ffffff'
         }),
-    
+
     ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
