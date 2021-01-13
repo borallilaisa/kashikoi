@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BuscaAssuntosService } from '../../services/busca-assuntos.service'; 
-import { CadastraAssuntosService } from '../../services/cadastra-assuntos.service'; 
+import { BuscaAssuntosService } from '../../services/busca-assuntos.service';
+import { CadastraAssuntosService } from '../../services/cadastra-assuntos.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
@@ -9,6 +9,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { UserServiceService } from '../../services/user-service.service';
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -32,24 +33,24 @@ export class SearchAssuntosOnlyComponent implements OnInit {
   assuntosEnsinarFiltrados: any = [];
   assuntosEnsinar:any = [];
   public loading = false;
- 
+
 
   @ViewChild('assuntoInput') assuntoInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-  
 
-  
+
+
   constructor(public assuntosService: BuscaAssuntosService,
               public userService: UserServiceService,
-              public cadastrarAssuntos: CadastraAssuntosService) { 
+              public cadastrarAssuntos: CadastraAssuntosService) {
 
     this.getUserAssuntos();
   }
 
   ngOnInit(): void {
-    
 
-  
+
+
   }
 
   getUserAssuntos() {
@@ -86,14 +87,19 @@ export class SearchAssuntosOnlyComponent implements OnInit {
   }
 
   assuntosRegister(assuntos:any, assuntosEnsinar:any):void{
-    this.loading = true;
+    let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
       this.cadastrarAssuntos.storeAssuntos({aprender: assuntos, ensinar: assuntosEnsinar}).then((data:any) => {
           console.log(data);
-          this.loading = false;
-          
+        Swal.fire(
+          'Sucesso!',
+          'Assuntos registrados com sucesso!',
+          'success'
+        )
+          loading.close()
+
       }).catch((err:any) => {
         console.log(err);
-        this.loading = false;
+        loading.close();
       })
   }
 
@@ -102,13 +108,11 @@ export class SearchAssuntosOnlyComponent implements OnInit {
         this.getAssuntos(q);
     else
     this.allAssuntos = [];
-  
+
   }
 
 
   add(event: MatChipInputEvent, aux:any): void {
-
-    console.log(aux);
 
     const input = event.input;
     const value = event.value;
@@ -116,7 +120,6 @@ export class SearchAssuntosOnlyComponent implements OnInit {
     // Add our assunto
     if ((value || '').trim()) {
       aux.push(value.trim());
-      alert(aux);
     }
 
     // Reset the input value
@@ -125,10 +128,12 @@ export class SearchAssuntosOnlyComponent implements OnInit {
     }
 
     this.assuntosCtrl.setValue(null);
+    this.q = "";
+    this.f = "";
   }
 
   remove(assunto: string, aux:any): void {
-    
+
     const index = aux.indexOf(assunto);
 
     if (index >= 0) {
@@ -137,11 +142,11 @@ export class SearchAssuntosOnlyComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent, aux:any, inputId: any): void {
-    
+
     aux.push(event.option.viewValue);
     inputId.nativeElement.value = '';
     inputId.setValue(null);
-    
+
   }
 
   private _filter(value: string): string[] {
