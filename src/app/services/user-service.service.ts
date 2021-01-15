@@ -53,10 +53,10 @@ export class UserServiceService {
   }
 
   getAuthUser() {
+
     if(window.localStorage.getItem('user'))
       return JSON.parse(window.localStorage.getItem('user'));
   }
-
 
   getUserData() {
 

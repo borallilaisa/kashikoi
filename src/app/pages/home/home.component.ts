@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../services/user-service.service';
-import { Router } from '@angular/router';  
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,10 @@ export class HomeComponent implements OnInit {
 
   assuntos:any = [];
   select_assunto:any = 2;
-  user:any = {}
+  user:any = {};
+  control:string = 'conversas';
 
-  constructor(private router: Router, public userService: UserServiceService) { 
+  constructor(private router: Router, public userService: UserServiceService) {
 
     this.user = this.userService.getAuthUser();
 
