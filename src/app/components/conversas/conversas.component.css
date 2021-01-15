@@ -1,0 +1,29 @@
+.container {
+  padding-top: 20px;
+}
+
+p {
+  margin: 0 !important;
+}
+
+p.title {
+  font-weight: bolder;
+  color: #000;
+}
+
+p.assunto {
+  color: rgb(221, 102, 0);
+  font-weight: bolder;
+}
+
+p.last_message {
+  font-size: 12px;
+}
+
+.col-sm-3 .col-lg-12,
+.col-md-4 .col-lg-12,
+.col-6 .col-lg-12 {
+  box-shadow: 0 0 4px 0px #777;
+  border-radius: 5px;
+  padding: 5px;
+}
