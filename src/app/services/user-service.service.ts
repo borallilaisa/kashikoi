@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, public router : Router) { }
 
   getUser(): Promise<unknown> {
 
@@ -51,6 +52,17 @@ export class UserServiceService {
     })
 
   }
+
+  logOut() {
+
+    return new Promise((resolve, reject) =>{
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+    })
+
+  }
+
+
 
   getAuthUser() {
     if(window.localStorage.getItem('user'))

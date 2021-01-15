@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { Login } from 'src/app/interfaces/login';
 import { AuthService } from '../../services/auth.service';
 import { ValidationService } from '../../services/validation.service';
-
+import {ContatoService} from '../../services/contato.service';
 import * as $ from 'jquery';
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -18,11 +19,13 @@ export class InicialComponent implements OnInit {
 
   open:boolean = false;
   errors:any = []
+  contato: any =[]
   user:any = { email: "admin", senha: "admin@123" };
   message: string;
   public loading = false;
 
   constructor(public userService: UserServiceService,
+              public contatoService: ContatoService,
               public router : Router,
               public validation: ValidationService,
               private authService : AuthService) {
@@ -123,6 +126,18 @@ export class InicialComponent implements OnInit {
     })
   }
 
+  EnviarContato(contato){
+
+    this.contatoService.enviarContato({contato: contato}).then((data:any) => {
+      console.log(data);
+
+
+    }).catch((err:any) => {
+      console.log(err);
+
+    })
+
+  }
 
   userLogin(user:any){
 

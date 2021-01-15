@@ -1,1 +1,115 @@
-<p>controlar-denuncia works!</p>
+<app-painel-administrativo>
+  <div class="description">
+    <h3>
+      Denuncias
+    </h3>
+  </div>
+  <!-- Navbar -->
+  <div class="listarDenuncias">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="barraPesquisa">
+          <div class="row">
+            <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+              <form>
+                <div class="input-group no-border">
+                  <input type="text" value="" (keypress)="validateKeyPress($event)" class="form-control" name="q" [(ngModel)]="q" placeholder="Encontrar usuário...">
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+              <button type="button" class="botaoIcone" (click)="searchDenuncias(q)">
+                <i class="nc-icon nc-zoom-split"></i>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabelaDenuncias">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                    <th>Id</th>
+                    <th>Usuário Denunciador</th>
+                    <th>Usuário Denunciado</th>
+                    <th>Motivo</th>
+                    <th>Data de Cadastro</th>
+                    <th class="text-right">
+
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let denuncia of denuncias">
+                      <td>
+                        {{denuncia.id}}
+                      </td>
+                      <td>
+                        {{denuncia.usuarioDenunciador}}
+                      </td>
+                      <td>
+                        {{denuncia.usuarioDenunciado}}
+                      </td>
+                      <td>
+                        {{denuncia.motivo}}
+                      </td>
+
+                      <td>
+                        {{denuncia.created_at  ? formatDate(denuncia.created_at) : " "}}
+
+                      </td>
+                      <td class="text-right">
+                        <button type="button" rel="tooltip" title="Visualizar Denuncia" class="btn btn-success btn-icon btn-sm " data-toggle="modal" data-target="#exampleModalLong" >
+                          <i class="nc-icon nc-single-02"></i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Aplica Bloqueio" class="btn btn-danger btn-icon btn-sm " (click)="softdeleteUser(usuario)">
+                          <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Descrição da Observação da Denuncia</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+</app-painel-administrativo>

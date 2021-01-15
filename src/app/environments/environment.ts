@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appUrl: 'http://192.168.18.27:84/api',
+  appUrl: 'http://192.168.0.105:82/api',
   pusher_app_id: '1135448',
   pusher_app_key: '9424a784cdc7d4687c0e',
   pusher_app_secret: '190410ae1ac2260d4d78',

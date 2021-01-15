@@ -1,1 +1,98 @@
-<p>controlar-assunto works!</p>
+<app-painel-administrativo>
+  <div class="description">
+    <h3>
+      Assuntos
+    </h3>
+  </div>
+  <!-- Navbar -->
+  <div class="Listar Assuntos">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="barraPesquisa">
+          <div class="row">
+            <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+              <form>
+                <div class="input-group no-border">
+                  <input type="text" value="" (keypress)="validateKeyPress($event)" class="form-control" name="q" [(ngModel)]="q" placeholder="Encontrar assunto...">
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+              <button type="button" class="botaoIcone" (click)="searchAssuntos(q)">
+                <i class="nc-icon nc-zoom-split"></i>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabelaAssuntos">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                    <th>Id</th>
+                    <th>Titulo</th>
+
+                    <th>Status De Aprovação</th>
+                    <th>Data de Cadastro</th>
+                    <th>Inativado em</th>
+                    <th class="text-right">
+
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let assunto of assuntos">
+                      <td>
+                        {{assunto.id}}
+                      </td>
+                      <td>
+                        {{assunto.titulo}}
+                      </td>
+
+                      <td>
+                        {{assunto.status ? 'Aprovada' : 'Pendente'}}
+                      </td>
+
+                      <td>
+                        {{assunto.created_at  ? formatDate(assunto.created_at ) : " "}}
+
+                      </td>
+                      <td>
+                        {{assunto.deleted_at  ? formatDate(assunto.deleted_at ) : " "}}
+
+                      </td>
+                      <td class="text-right">
+                        <button type="button" rel="tooltip" title="aprovar assunto" class="btn btn-success btn-icon btn-sm " (click)="aprovarAssunto(assunto)">
+                          <i class="nc-icon nc-check-2"></i>
+                        </button>
+                        <button type="button" rel="tooltip" title="inativar assunto" class="btn btn-danger btn-icon btn-sm " (click)="inativarAssunto(assunto)">
+                          <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</app-painel-administrativo>

@@ -84,15 +84,6 @@ export class ControlarUsuarioComponent implements OnInit {
       }
     })
 
-
-
-
-
-
-
-
-
-
   }
   deletarUsuario(user){
     Swal.fire({

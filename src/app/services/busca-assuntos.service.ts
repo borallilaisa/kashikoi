@@ -23,23 +23,33 @@ export class BuscaAssuntosService {
           .subscribe((data:any) => resolve(data), (err:any) => reject(err));
       })
   }
-}
 
+  approveAssunto(id){
 
-export class BuscaAssuntosCadastradosService {
+    return new Promise((resolve, reject) => {
 
-  constructor(public http: HttpClient,
-              public userService: UserServiceService) { }
+      let user:any = this.userService.getAuthUser();
+      this.http.post(`${environment.appUrl}/assunto/liberar-assunto?token=${user.token}`, {id: id})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
 
-  get(q:string = null) {
+  }
+
+  softDeleteAssunto(id){
+    return new Promise((resolve, reject) => {
+      let user:any = this.userService.getAuthUser();
+      this.http.post(`${environment.appUrl}/assunto/inativar-assunto?token=${user.token}`, {id: id})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
+  getAllAssuntos(q){
+    return new Promise((resolve, reject) => {
 
       let user:any = this.userService.getAuthUser();
 
-      q = q ? q : "";
-
-      return new Promise((resolve, reject) => {
-        this.http.get( `${environment.appUrl}/assunto?token=${user.token}&q=${q}`)
-          .subscribe((data:any) => resolve(data), (err:any) => reject(err));
-      })
+      this.http.get(`${environment.appUrl}/assunto/pesquisar-assunto?q=${q}&token=${user.token}`)
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
   }
 }

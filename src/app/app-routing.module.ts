@@ -13,6 +13,9 @@ import { PainelAdministrativoComponent } from './pages/adm/painel-administrativo
 import { RecuperarsenhaComponent } from './pages/recuperarsenha/recuperarsenha.component';
 import { RecuperarsenhafinalizarComponent } from './pages/recuperarsenhafinalizar/recuperarsenhafinalizar.component';
 import { ControlarUsuarioComponent } from './pages/adm/controlar-usuario/controlar-usuario.component';
+import { ControlarAssuntoComponent } from './pages/adm/controlar-assunto/controlar-assunto.component';
+import {ControlarDenunciaComponent} from "./pages/adm/controlar-denuncia/controlar-denuncia.component";
+import {CaixaDeContatoComponent} from "./pages/adm/caixa-de-contato/caixa-de-contato.component";
 
 const routes: Routes = [
 
@@ -27,6 +30,9 @@ const routes: Routes = [
     {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent},
     {path:"adm", component: PainelAdministrativoComponent},
     {path:"adm/usuarios", component: ControlarUsuarioComponent},
+    {path:"adm/assuntos", component: ControlarAssuntoComponent},
+    {path:"adm/denuncias", component: ControlarDenunciaComponent},
+    {path:"adm/contato", component: CaixaDeContatoComponent},
 
 ];
 
