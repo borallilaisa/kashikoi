@@ -25,7 +25,7 @@ const routes: Routes = [
     {path:"", component: InicialComponent},
     {path:"perfil/:id", component: PerfilPessoalComponent},
     {path:"chat/:hash", component: ChatComponent},
-    {path:"denuncia", component: DenunciaComponent},
+    {path:"denuncia/:id", component: DenunciaComponent},
     {path:"recuperar-senha", component: RecuperarsenhaComponent},
     {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent},
     {path:"adm", component: PainelAdministrativoComponent},

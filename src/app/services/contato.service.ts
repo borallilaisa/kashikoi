@@ -18,4 +18,13 @@ export class ContatoService {
     })
   }
 
+  enviarMensagem(mensagem){
+    return new Promise((resolve, reject) => {
+
+      this.http.post( `${environment.appUrl}/contato/registra-contato`, mensagem)
+        .subscribe((data:any) => resolve(data), (err:any) => reject(err));
+
+    })
+  }
+
 }

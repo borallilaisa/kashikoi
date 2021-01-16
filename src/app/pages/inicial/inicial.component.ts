@@ -47,9 +47,16 @@ export class InicialComponent implements OnInit {
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('user', JSON.stringify(data));
           this.loading = false;
+
+          if(data.level == 1)
           this.router.navigate(['/inicio']);
+
+          else
+          this.router.navigate(['/adm']);
+
         }).catch((err:any) => {
             console.log(err);
+          alert('Erro ao efetuar login');
             this.loading = false;
         })
     }).catch((err:any) => {
@@ -96,9 +103,9 @@ export class InicialComponent implements OnInit {
 
             localStorage.setItem('user', JSON.stringify(data));
 
-            this.router.navigate(['/perfil']);
+            this.router.navigate(['/inicio']);
 
-             //this.userLogin(user);
+            // this.userLogin(user);
              this.loading = false;
 
 

@@ -1,1 +1,124 @@
-<p>caixa-de-contato works!</p>
+<app-painel-administrativo>
+  <div class="description">
+    <h3>
+      Caixa de Contato
+    </h3>
+  </div>
+  <!-- Navbar -->
+  <div class="listaUsuarios">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="barraPesquisa">
+          <div class="row">
+            <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+              <form>
+                <div class="input-group no-border">
+                  <input type="text" value="" (keypress)="validateKeyPress($event)" class="form-control" name="q" [(ngModel)]="q" placeholder="Pesquisar e-mail...">
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+              <button type="button" class="botaoIcone" (click)="searchContact(q)">
+                <i class="nc-icon nc-zoom-split"></i>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabelaCaixaDeMensagens">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Assunto</th>
+
+                    <th class="text-right">
+
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let contato of contatos">
+                      <td>
+                        {{contato.id}}
+                      </td>
+                      <td>
+                        {{contato.email}}
+                      </td>
+                      <td>
+                        {{contato.assunto}}
+                      </td>
+
+                      <td class="text-right">
+                        <button type="button" rel="tooltip" title="Visualizar mensagem" class="btn btn-success btn-icon btn-sm "  data-toggle="modal" data-target="#exampleModal">
+                          <i class="nc-icon nc-chat-33"></i>
+                        </button>
+
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mensagem</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="row">
+              <div class="col-md-10">
+                <label for="exampleFormControlTextarea1">Mensagem:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-10">
+                <label for="exampleFormControlTextarea1">Escreva sua resposta: </label>
+                <textarea class="form-control" name="respostaMensagem" id="exampleFormControlTextarea1" [(ngModel)]="respostaMensagem"  rows="3"></textarea>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="gravarMensagem(respostaMensagem)" >Enviar Mensagem</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+</app-painel-administrativo>

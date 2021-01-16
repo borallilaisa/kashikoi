@@ -136,6 +136,10 @@ export class ChatComponent implements OnInit {
 
   }
 
+  denunciar(idDenunciado){
+    this.router.navigate([`/denuncia/${idDenunciado}`]);
+  }
+
   groupBy(xs, key) {
 
     return xs.reduce(function(rv, x) {

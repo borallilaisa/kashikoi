@@ -1,30 +1,32 @@
 <app-logged-menu>
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-sm-10">
     <div  id="denuncia">
-        <br/>
-        <form>
-            <span class="title">Denunciar</span>
+        <br/>     <br/>
+        <form (submit)="enviarDenuncia(denuncia)">
+            <span class="title">Denunciar Usuário</span>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-10 col-sm-10">
-                        <label for="usuarioDenunciado">Usuário Denunciado</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1">
-                        
+                        <label>Usuário Denunciado</label>
+                        <input type="text" class="form-control" [(ngModel)]="denunciado.name" name="nome_denunciado" id="exampleInputEmail1" disabled>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-10 col-sm-10">
-                        <label for="motivoDenuncia">Motivo</label>
-                        <input type="motivo" class="form-control">
+                        <label>Motivo</label>
+                        <input type="text" [(ngModel)]="denuncia.motivo" name="denuncia_motivo" class="form-control">
                     </div>
-                </div>  
+                </div>
 
                 <div class="row">
                     <div class="col-lg-10 col-sm-10">
-                        <label for="maisInfoDenuncia">Mais informações</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        
-                    </div>        
+                        <label>Mais informações</label>
+                        <textarea class="form-control" [(ngModel)]="denuncia.observacao" name="denuncia_info"id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                    </div>
                 </div>
                 <br/>
                 <div class="row">
@@ -36,6 +38,8 @@
             </div>
         </form>
     </div>
+    </div>
+  </div>
  </app-logged-menu>
 
 
