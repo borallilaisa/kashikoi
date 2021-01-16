@@ -5,15 +5,18 @@
                 <div class="container">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="userChatImg"><img src='https://64.media.tumblr.com/6b3b46196d456dfb2d5b48d58ee1f705/07344737b470fbc8-68/s640x960/19e247521935659f0a53cef31751bcccceb31cba.jpg' width='60' height='60'></a>
+                            <a class="userChatImg" *ngIf="destinatario.id">
+                              <img [src]='destinatario.usuario_perfil.profilePic' width='60' height='60'>
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">Nome do Usuário</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                              {{ destinatario.name }}
+                            </a>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="#">Adicionar como amigo</a>
                               <a class="dropdown-item" href="#">Denunciar Pessoa</a>
                               <a class="dropdown-item" href="#">Limpar Conversa</a>
-                              <a class="dropdown-item" href="#">Encerrar Conversa</a>
                             </div>
                         </li>
                       </ul>

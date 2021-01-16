@@ -62,8 +62,6 @@ export class UserServiceService {
 
   }
 
-
-
   getAuthUser() {
 
     if(window.localStorage.getItem('user'))
@@ -199,7 +197,16 @@ export class UserServiceService {
         .subscribe((data:any) => resolve(data), err => reject(err))
     })
 
+  }
 
+  getUsersByAssuntos(tipo_assunto, assunto) {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.getAuthUser();
+
+      this.http.get(`${environment.appUrl}/user/${user.id}/listar/${assunto}/${tipo_assunto}?token=${user.token}`)
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
   }
 
 }

@@ -39,6 +39,7 @@ import { ControlarDenunciaComponent } from './pages/adm/controlar-denuncia/contr
 import { CaixaDeContatoComponent } from './pages/adm/caixa-de-contato/caixa-de-contato.component';
 import { ConversasComponent } from './components/conversas/conversas.component';
 import { AmizadesComponent } from './components/amizades/amizades.component';
+import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pessoas-modal/encontrar-pessoas-modal.component';
 
 
 
@@ -70,7 +71,8 @@ import { AmizadesComponent } from './components/amizades/amizades.component';
     ControlarDenunciaComponent,
     CaixaDeContatoComponent,
     ConversasComponent,
-    AmizadesComponent
+    AmizadesComponent,
+    EncontrarPessoasModalComponent
 
   ],
     imports: [

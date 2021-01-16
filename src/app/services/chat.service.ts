@@ -8,6 +8,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ChatService {
 
+  obj_chat:any = {};
+
   constructor(public http: HttpClient,
               public userService: UserServiceService) {}
 
@@ -22,12 +24,12 @@ export class ChatService {
 
   }
 
-  openChat(id_professor, id_aluno) {
+  openChat(hash) {
     let user:any = this.userService.getAuthUser();
 
     return new Promise((resolve, reject) => {
 
-      this.http.get( `${environment.appUrl}/chat/abrir/${id_professor}/${id_aluno}?token=${user.token}`)
+      this.http.get( `${environment.appUrl}/chat/abrir/${hash}?token=${user.token}`)
         .subscribe((data:any) => resolve(data), (err:any) => reject(err));
 
     });
@@ -55,5 +57,15 @@ export class ChatService {
         .subscribe((data:any) => resolve(data), (err:any) => reject(err));
 
     });
+  }
+
+  startNewChat(config) {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.userService.getAuthUser();
+
+      this.http.post(`${environment.appUrl}/chat/novo-chat?token=${user.token}`, config)
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
   }
 }

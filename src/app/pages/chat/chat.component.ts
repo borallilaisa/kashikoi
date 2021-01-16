@@ -5,6 +5,8 @@ import {ChatService} from "../../services/chat.service";
 import Swal from "sweetalert2";
 import {UserServiceService} from "../../services/user-service.service";
 import * as moment from "moment";
+import {ActivatedRoute, Router} from "@angular/router";
+import {switchAll} from "rxjs/operators";
 
 @Component({
   selector: 'app-chat',
@@ -22,8 +24,6 @@ export class ChatComponent implements OnInit {
   destinatario:any = {};
   remetente:any = {};
   user:any = {};
-  aluno:any = {id: 1};
-  professor:any = {id: 2};
   pagination: any = {
     page: 1,
     last: 1,
@@ -32,65 +32,59 @@ export class ChatComponent implements OnInit {
   }
 
   constructor(public chatService: ChatService,
-              public userService: UserServiceService) {
+              public userService: UserServiceService,
+              private router: Router,
+              private route: ActivatedRoute) {
 
     this.user = this.userService.getAuthUser();
-
-    if(this.user.id == this.aluno.id) {
-      this.destinatario = this.professor;
-      this.remetente = this.aluno;
-    }
-    else {
-      this.destinatario = this.aluno;
-      this.remetente = this.professor;
-    }
-
-    Pusher.logToConsole = true;
-    
-    let pusher = new Pusher(environment.pusher_app_key, {
-      cluster: environment.pusher_app_cluster
-    });
-
-    this.channel = pusher.subscribe('chat-channel');
-    this.channel.bind(`chat-a${this.aluno.id}-p${this.professor.id}`, (data) => {
-      this.messages.push(data.message);
-
-      setTimeout(() => {
-        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      }, 200)
-    });
 
   }
 
   ngOnInit(): void {
-    this.openChat().then((data:any) => {
 
-      this.getMessages(this.pagination.page);
+    this.route.paramMap.subscribe(params => {
+      let hash = params.get("hash");
 
-    }).catch((err:any) => {
+      if (hash) {
 
-    });
-  }
+        this.chatService.openChat(hash).then((data:any) => {
 
-  openChat() {
+          this.chat = data;
 
-    let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
+          if(this.user.id == data.aluno.id) {
+            this.destinatario = data.professor;
+            this.remetente = data.aluno;
+          }
+          else {
+            this.destinatario = data.aluno;
+            this.remetente = data.professor;
+          }
 
-    return new Promise((resolve, reject) => {
+          this.getMessages();
 
-      this.chatService.openChat(2, 1).then((data:any) => {
+          Pusher.logToConsole = true;
 
-        this.chat = data;
+          let pusher = new Pusher(environment.pusher_app_key, {
+            cluster: environment.pusher_app_cluster
+          });
 
-        loading.close();
-        resolve(data);
+          this.channel = pusher.subscribe('chat-channel');
+          this.channel.bind(`${data.hash}`, (resp) => {
+            this.messages.push(resp.message);
 
-      }).catch((err) => {
+            setTimeout(() => {
+              this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            }, 200)
+          });
 
-        loading.close();
-        reject(err)
+        }).catch((err:any) => {
+          Swal.fire('Atenção', 'Chat inválido', 'error')
+          this.router.navigate([`/inicio`]);
+        })
 
-      });
+      } else {
+        this.router.navigate([`/inicio`]);
+      }
     })
   }
 
@@ -130,8 +124,10 @@ export class ChatComponent implements OnInit {
       let aux = {
         idRemetente: this.remetente.id,
         idDestinatario: this.destinatario.id,
-        mensagem: message
+        mensagem: message+""
       }
+
+      this.message = "";
 
       this.chatService.sendMessage(this.chat.id, aux).then((data) => {
         this.message = "";

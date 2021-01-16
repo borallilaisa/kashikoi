@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  assuntos:any = [];
-  select_assunto:any = 2;
   user:any = {};
   control:string = 'conversas';
 
@@ -18,13 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, public userService: UserServiceService) {
 
     this.user = this.userService.getAuthUser();
-
-    this.userService.getAssuntosVinculados().then((data:any) => {
-      if(data)
-        this.assuntos = data;
-    }).catch((err:any) => {
-      console.log(err);
-    })
   }
 
   ngOnInit(): void {

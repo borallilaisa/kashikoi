@@ -32,7 +32,7 @@ export class AmizadesComponent implements OnInit {
       this.friends = data;
       loading.close();
     }).catch((err:any) => {
-      loading.dismiss();
+      loading.close();
     })
   }
 

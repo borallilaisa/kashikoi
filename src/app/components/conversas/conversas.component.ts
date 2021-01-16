@@ -22,7 +22,7 @@ export class ConversasComponent implements OnInit {
         this.chats = data;
         loading.close();
     }).catch((err:any) => {
-        loading.dismiss();
+        loading.close();
     })
   }
 

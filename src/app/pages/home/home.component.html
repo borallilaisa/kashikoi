@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6 ">
                                 <div id="search-tool">
-                                    <button type="button" class="btn btn-lg search-button" data-toggle="modal" data-target=".bd-example-modal-lg">Encontrar Pessoas</button>
+                                    <button type="button" class="btn btn-lg search-button" data-toggle="modal" data-target=".encontrar-pessoas-modal">Encontrar Pessoas</button>
                                 </div>
                             </div>
                         </div>
@@ -161,38 +161,6 @@
             <br/>
         </div> -->
     </div>
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg ">
-      <div class="modal-content chat">
-        <div class="form-row justify-content-center">
-          <div class="form-group col-md-8">
-            <br/>
-            <br/>
-            <br/>
-            <h2  id="searchTitle">ENCONTRAR PESSOAS</h2>
-          </div>
-          <div class="form-group col-md-8">
-            <label for="inputCity">O que Deseja Fazer?</label>
-            <select id="inputState" class="form-control" [(ngModel)]="select_assunto">
-              <option value="2">Ensinar</option>
-              <option value="1">Aprender</option>
-            </select>
-          </div>
-          <!-- tipoAssunto -->
-          <div class="form-group col-md-8">
-            <label for="inputCity">Assunto</label>
-            <select id="inputAssunto" class="form-control">
-              <option [value]="assunto.assunto.id" *ngFor="let assunto of assuntos | tipoAssunto: select_assunto">
-                {{ assunto.assunto.titulo }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-8">
-            <button type="button" class="btn btn-primary buttons">INICIAR BUSCA</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-encontrar-pessoas-modal></app-encontrar-pessoas-modal>
 </app-logged-menu>
 
