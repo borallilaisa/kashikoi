@@ -15,12 +15,15 @@ export class ControlarDenunciaComponent implements OnInit {
   denuncia:any = {};
   denuncias: any = [];
   q:string = "";
+  selected_denuncia:any = {};
 
   constructor(private http : HttpClient, public userService: UserServiceService, public denunciaService: DenunciaService) { }
 
   ngOnInit(): void {
+    this.searchDenuncias();
   }
-  searchDenuncias(q) {
+
+  searchDenuncias(q = "") {
 
     let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
 
@@ -80,7 +83,44 @@ export class ControlarDenunciaComponent implements OnInit {
 
       }
     })
+  }
 
+  confirmDenuncia(denuncia) {
+    if(confirm('Deseja confirmar esta denuncia?')) {
+
+      let loading: any = Swal.fire({didOpen: () => Swal.showLoading()});
+
+      this.denunciaService.confirmDenuncia(denuncia.id).then((data:any) => {
+
+        loading.close();
+        Swal.fire('Sucesso!', 'Denuncia confirmada com sucesso!', 'success');
+        this.searchDenuncias(this.q);
+
+      }).catch((err:any) => {
+        loading.close();
+        Swal.fire('Atenção!', 'Erro ao confirmar denuncia!', 'error');
+      })
+    }
+  }
+
+  ignoreDenuncia(denuncia){
+
+    if(confirm('Deseja ignorar esta denuncia?')) {
+
+      let loading: any = Swal.fire({didOpen: () => Swal.showLoading()});
+
+      this.denunciaService.ignoreDenuncia(denuncia.id).then((data:any) => {
+
+        loading.close();
+        Swal.fire('Sucesso!', 'Denuncia confirmada com sucesso!', 'success');
+        this.searchDenuncias(this.q);
+
+      }).catch((err:any) => {
+        loading.close();
+        Swal.fire('Atenção!', 'Erro ao confirmar denuncia!', 'error');
+      })
+    }
 
   }
+
 }

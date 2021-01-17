@@ -18,7 +18,7 @@
               </form>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-              <button type="button" class="botaoIcone" (click)="searchContact(q)">
+              <button type="button" class="botaoIcone" (click)="searchContato(q)">
                 <i class="nc-icon nc-zoom-split"></i>
               </button>
 
@@ -59,7 +59,7 @@
                       </td>
 
                       <td class="text-right">
-                        <button type="button" rel="tooltip" title="Visualizar mensagem" class="btn btn-success btn-icon btn-sm "  data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" (click)="selected_contato = contato" rel="tooltip" title="Visualizar mensagem" class="btn btn-success btn-icon btn-sm "  data-toggle="modal" data-target="#exampleModal">
                           <i class="nc-icon nc-chat-33"></i>
                         </button>
 
@@ -88,17 +88,21 @@
           <div class="modal-body">
 
             <div class="row">
-              <div class="col-md-10">
+              <div class="col-md-12">
                 <label for="exampleFormControlTextarea1">Mensagem:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
+                <textarea class="form-control" name="mensagem" id="exampleFormControlTextarea1" rows="3" disabled>
+
+                  {{selected_contato.mensagem}}
+
+                </textarea>
               </div>
 
             </div>
 
             <div class="row">
-              <div class="col-md-10">
+              <div class="col-md-12">
                 <label for="exampleFormControlTextarea1">Escreva sua resposta: </label>
-                <textarea class="form-control" name="respostaMensagem" id="exampleFormControlTextarea1" [(ngModel)]="respostaMensagem"  rows="3"></textarea>
+                <textarea class="form-control" name="respostaMensagem" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
 
             </div>

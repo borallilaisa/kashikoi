@@ -16,6 +16,8 @@ import { ControlarUsuarioComponent } from './pages/adm/controlar-usuario/control
 import { ControlarAssuntoComponent } from './pages/adm/controlar-assunto/controlar-assunto.component';
 import {ControlarDenunciaComponent} from "./pages/adm/controlar-denuncia/controlar-denuncia.component";
 import {CaixaDeContatoComponent} from "./pages/adm/caixa-de-contato/caixa-de-contato.component";
+import {Error404Component} from "./pages/error404/error404.component";
+
 
 const routes: Routes = [
 
@@ -33,7 +35,7 @@ const routes: Routes = [
     {path:"adm/assuntos", component: ControlarAssuntoComponent},
     {path:"adm/denuncias", component: ControlarDenunciaComponent},
     {path:"adm/contato", component: CaixaDeContatoComponent},
-
+    {path: '404', component: Error404Component},
 ];
 
 @NgModule({

@@ -40,6 +40,7 @@ import { CaixaDeContatoComponent } from './pages/adm/caixa-de-contato/caixa-de-c
 import { ConversasComponent } from './components/conversas/conversas.component';
 import { AmizadesComponent } from './components/amizades/amizades.component';
 import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pessoas-modal/encontrar-pessoas-modal.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 
 
@@ -72,7 +73,8 @@ import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pes
     CaixaDeContatoComponent,
     ConversasComponent,
     AmizadesComponent,
-    EncontrarPessoasModalComponent
+    EncontrarPessoasModalComponent,
+    Error404Component
 
   ],
     imports: [

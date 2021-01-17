@@ -53,10 +53,10 @@
                         {{denuncia.id}}
                       </td>
                       <td>
-                        {{denuncia.usuarioDenunciador}}
+                        {{denuncia.denunciador.name}}
                       </td>
                       <td>
-                        {{denuncia.usuarioDenunciado}}
+                        {{denuncia.denunciado.name}}
                       </td>
                       <td>
                         {{denuncia.motivo}}
@@ -67,11 +67,16 @@
 
                       </td>
                       <td class="text-right">
-                        <button type="button" rel="tooltip" title="Visualizar Denuncia" class="btn btn-success btn-icon btn-sm " data-toggle="modal" data-target="#exampleModalLong" >
-                          <i class="nc-icon nc-single-02"></i>
+                        <button type="button" (click)="selected_denuncia = denuncia" rel="tooltip" title="Visualizar Denuncia" class="btn btn-info btn-icon btn-sm " data-toggle="modal" data-target="#exampleModalLong" >
+                          <i class="nc-icon nc-paper"></i>
                         </button>
-                        <button type="button" rel="tooltip" title="Aplica Bloqueio" class="btn btn-danger btn-icon btn-sm " (click)="softdeleteUser(usuario)">
+
+                        <button type="button" rel="tooltip" title="Aplica Bloqueio" class="btn btn-danger btn-icon btn-sm " (click)="confirmDenuncia(denuncia)">
                           <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+
+                        <button type="button" rel="tooltip" title="Ignorar Denuncia" class="btn btn-primary btn-icon btn-sm " (click)="ignoreDenuncia(denuncia)">
+                          <i class="nc-icon nc-simple-delete"></i>
                         </button>
                       </td>
                     </tr>
@@ -95,11 +100,9 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            {{selected_denuncia.observacao}}
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Fechar</button>
-          </div>
+
         </div>
       </div>
     </div>

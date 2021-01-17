@@ -16,7 +16,7 @@ export class DenunciaService {
 
       let user:any = this.userService.getAuthUser();
 
-      this.http.get(`${environment.appUrl}/user/pesquisar-denuncias?q=${q}&token=${user.token}`)
+      this.http.get(`${environment.appUrl}/denuncia/pesquisar-denuncias?q=${q}&token=${user.token}`)
         .subscribe((data:any) => resolve(data), err => reject(err))
     })
   }
@@ -31,5 +31,24 @@ export class DenunciaService {
     })
   }
 
+  confirmDenuncia(id_denuncia) {
+    return new Promise((resolve, reject) => {
 
+      let user:any = this.userService.getAuthUser();
+
+      this.http.post(`${environment.appUrl}/denuncia/${id_denuncia}/confirm?token=${user.token}`, {})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
+  ignoreDenuncia(id_denuncia){
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.userService.getAuthUser();
+
+      this.http.post(`${environment.appUrl}/denuncia/${id_denuncia}/ignore?token=${user.token}`, {})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+  }
 }

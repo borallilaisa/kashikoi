@@ -19,7 +19,7 @@ export class InicialComponent implements OnInit {
 
   open:boolean = false;
   errors:any = []
-  contato: any =[]
+  contato: any = {}
   user:any = { email: "admin", senha: "admin@123" };
   message: string;
   public loading = false;
@@ -133,15 +133,20 @@ export class InicialComponent implements OnInit {
     })
   }
 
-  EnviarContato(contato){
+  enviarContato(contato){
 
-    this.contatoService.enviarContato({contato: contato}).then((data:any) => {
-      console.log(data);
+    let loading: any = Swal.fire({didOpen: () => Swal.showLoading()})
+
+    this.contatoService.enviarContato(contato).then((data:any) => {
+
+      Swal.fire('Sucesso!', 'Contato enviada com sucesso!', 'success');
+      loading.close();
+      this.contato = {};
 
 
     }).catch((err:any) => {
-      console.log(err);
-
+      Swal.fire('Atenção!', 'Erro ao enviar contato', 'error');
+      loading.close();
     })
 
   }

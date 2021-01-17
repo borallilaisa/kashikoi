@@ -14,20 +14,23 @@ export class CaixaDeContatoComponent implements OnInit {
 
   contato:any = {};
   contatos: any = [];
+  selected_contato:any = {};
   respostaMensagem:any = {};
   q:string = "";
 
   constructor(private http : HttpClient, public userService: UserServiceService, public contatoService: ContatoService) { }
 
   ngOnInit(): void {
+    this.searchContato();
+
   }
 
 
-  searchContact(q) {
+  searchContato(q = "") {
 
     let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
 
-    this.userService.findUser(q).then((data:any) => {
+    this.contatoService.getAllContatos(q).then((data:any) => {
       this.contatos = data;
 
       console.log(data);
@@ -42,7 +45,7 @@ export class CaixaDeContatoComponent implements OnInit {
 
   validateKeyPress(event) {
     if(event.code == "Enter")
-      this.searchContact(this.q);
+      this.searchContato(this.q);
   }
 
   formatDate(date) {
