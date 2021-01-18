@@ -17,6 +17,7 @@ import { ControlarAssuntoComponent } from './pages/adm/controlar-assunto/control
 import {ControlarDenunciaComponent} from "./pages/adm/controlar-denuncia/controlar-denuncia.component";
 import {CaixaDeContatoComponent} from "./pages/adm/caixa-de-contato/caixa-de-contato.component";
 import {Error404Component} from "./pages/error404/error404.component";
+import {AjudaComponent} from "./pages/ajuda/ajuda.component";
 
 
 const routes: Routes = [
@@ -31,11 +32,13 @@ const routes: Routes = [
     {path:"recuperar-senha", component: RecuperarsenhaComponent},
     {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent},
     {path:"adm", component: PainelAdministrativoComponent},
+    {path:"ajuda", component: AjudaComponent},
     {path:"adm/usuarios", component: ControlarUsuarioComponent},
     {path:"adm/assuntos", component: ControlarAssuntoComponent},
     {path:"adm/denuncias", component: ControlarDenunciaComponent},
     {path:"adm/contato", component: CaixaDeContatoComponent},
     {path: '404', component: Error404Component},
+    {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

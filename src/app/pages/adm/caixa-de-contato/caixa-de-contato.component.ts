@@ -15,7 +15,7 @@ export class CaixaDeContatoComponent implements OnInit {
   contato:any = {};
   contatos: any = [];
   selected_contato:any = {};
-  respostaMensagem:any = {};
+  respostaMensagem:string = "";
   q:string = "";
 
   constructor(private http : HttpClient, public userService: UserServiceService, public contatoService: ContatoService) { }
@@ -55,14 +55,22 @@ export class CaixaDeContatoComponent implements OnInit {
   }
 
 
-  gravarMensagem(respostaMensagem){
-    this.contatoService.enviarMensagem(respostaMensagem).then((data:any) => {
+  gravarMensagem(respostaMensagem, selected_contato){
+    let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
+    this.contatoService.enviarMensagem(respostaMensagem, selected_contato).then((data:any) => {
       this.contato = data;
 
+      loading.close();
+
+      Swal.fire('Sucesso!', 'Mensagem enviada com sucesso!', 'success');
+
+      this.searchContato();
 
     }).catch((err:any) => {
       console.log(err);
+      Swal.fire('Erro!', 'Não foi possível responder essa mensagem!', 'error');
 
+      loading.close();
 
     })
 

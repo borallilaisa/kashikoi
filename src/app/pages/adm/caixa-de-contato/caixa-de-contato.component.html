@@ -102,7 +102,7 @@
             <div class="row">
               <div class="col-md-12">
                 <label for="exampleFormControlTextarea1">Escreva sua resposta: </label>
-                <textarea class="form-control" name="respostaMensagem" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" name="respostaMensagem" [(ngModel)]="respostaMensagem" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
 
             </div>
@@ -110,7 +110,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" (click)="gravarMensagem(respostaMensagem)" >Enviar Mensagem</button>
+            <button type="button" class="btn btn-primary" (click)="gravarMensagem(respostaMensagem, selected_contato)" data-dismiss="modal" >Enviar Mensagem</button>
           </div>
         </div>
       </div>

@@ -30,11 +30,14 @@ export class ContatoService {
     })
   }
 
-  enviarMensagem(mensagem){
+  enviarMensagem(mensagem, selected_contato){
 
     return new Promise((resolve, reject) => {
 
-      this.http.post( `${environment.appUrl}/contato/enviar-mensagem`, mensagem)
+
+      let user:any = this.userService.getAuthUser();
+
+      this.http.post( `${environment.appUrl}/contato/${selected_contato.id}/enviar-mensagem?token=${user.token}`, {mensagem: mensagem})
         .subscribe((data:any) => resolve(data), (err:any) => reject(err));
 
     })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserServiceService } from '../../services/user-service.service'; 
+import { UserServiceService } from '../../services/user-service.service';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
@@ -26,12 +26,12 @@ export class EditarperfilComponent implements OnInit {
 
 
   onFileChanged(event) {
- 
+
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () =>{
-        
+
       this.userService.uploadPhoto(reader.result).then((data:any) => {
           this.user = data;
       }).catch((err:any) => {
@@ -63,15 +63,15 @@ export class EditarperfilComponent implements OnInit {
     return this.user.usuario_perfil.profilePic ? this.user.usuario_perfil.profilePic : "/assets/img/profilepic.png";
 
   }
-  
-  
+
+
   async registraDados(user) {
    Swal.fire({
       title: 'Digite sua senha',
       input: 'password',
       inputLabel: 'Password',
       inputPlaceholder: 'Digite sua senha',
-      
+
     }).then((data:any) => {
 
       /*isConfirmed: true
@@ -80,17 +80,23 @@ export class EditarperfilComponent implements OnInit {
 
       if(data.isConfirmed && data.value) {
         if (!user.name && !user.email){
-    
+
         }
          else {
-          this.loading = true;
+          let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
+
            user.password = data.value;
           this.userService.registerInfoPerfil(user).then((data:any)=>{
               console.log(data);
-              this.loading = false;
+
+            loading.close();
+
+            Swal.fire('Sucesso!', 'Informações salvas com sucesso!', 'success');
           }).catch((err:any) =>{
             console.log(err);
-            this.loading = false;
+            loading.close();
+
+            Swal.fire('Erro!', 'Não foi possível atualizar seu perfil, verifique os dados ou entre em contato com o suporte!', 'success');
           })
         }
       }

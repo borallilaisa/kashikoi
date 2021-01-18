@@ -665,13 +665,15 @@ hr{
 
 
 .corpo-404{
-  min-height: 450px;
+  min-height: 400px;
   height: auto;
   text-align: center;
 }
 
 .titulo404 {
-  font-size:9em !important;
+  font-size:12em !important;
+  text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #f1861b;
 
 }
 

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserServiceService} from "../../services/user-service.service";
 import {DenunciaService} from "../../services/denuncia.service";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
+
+
 
 @Component({
   selector: 'app-denuncia',
@@ -55,9 +57,11 @@ export class DenunciaComponent implements OnInit {
 
       console.log(data);
 
+
+
     }).catch((err:any) =>{
       console.log(err);
-      Swal.fire('Arenção!', 'Erro ao realizar denuncia!', 'error');
+      Swal.fire('Atenção!', 'Erro ao realizar denuncia!', 'error');
 
       loading.close();
 

@@ -86,7 +86,7 @@ export class ControlarDenunciaComponent implements OnInit {
   }
 
   confirmDenuncia(denuncia) {
-    if(confirm('Deseja confirmar esta denuncia?')) {
+    if(confirm()) {
 
       let loading: any = Swal.fire({didOpen: () => Swal.showLoading()});
 
