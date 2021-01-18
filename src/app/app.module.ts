@@ -41,6 +41,8 @@ import { ConversasComponent } from './components/conversas/conversas.component';
 import { AmizadesComponent } from './components/amizades/amizades.component';
 import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pessoas-modal/encontrar-pessoas-modal.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationCompleteComponent } from './components/modal/notification-complete/notification-complete.component';
 
 
 
@@ -74,7 +76,9 @@ import { Error404Component } from './pages/error404/error404.component';
     ConversasComponent,
     AmizadesComponent,
     EncontrarPessoasModalComponent,
-    Error404Component
+    Error404Component,
+    NotificationsComponent,
+    NotificationCompleteComponent
 
   ],
     imports: [

@@ -79,88 +79,8 @@
   </div>
     <app-conversas *ngIf="user.id && control == 'conversas'" [user]="user" style="width: 100% !important;"></app-conversas>
     <app-amizades *ngIf="user.id && control == 'amigos'" [user]="user" style="width: 100% !important;"></app-amizades>
+    <app-notifications *ngIf="user.id && control == 'notificacoes'" style="width: 100% !important;"></app-notifications>
 
-    <div class="row" *ngIf="control == 'notificacoes'">
-
-    </div>
-
-    <div id="grid-contato">
-
-        <!-- <div id="ultimas-conversas">
-          <br/>
-          <div class="col-lg-12 col-sm-12">
-                <h5> Últimas Conversas</h5>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between">
-                            Cras justo odio
-                            <span class="notificacoes badge badge-primary badge-pill">14</span>
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between">
-                            Cras justo odio
-                            <span class="notificacoes badge badge-primary badge-pill">14</span>
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between ">
-                            Cras justo odio
-                            <span class="notificacoes badge badge-primary badge-pill">14</span>
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-        <div id="lista-contatos">
-            <div class="col-lg-12 col-sm-12">
-                <h5> Contatos</h5>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between">
-                            Cras justo odio
-
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between">
-                            Cras justo odio
-
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <li class="list-group-item d-flex justify-content-between ">
-                            Cras justo odio
-
-                            </li>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-
-
-            <br/>
-        </div> -->
-    </div>
   <app-encontrar-pessoas-modal></app-encontrar-pessoas-modal>
 </app-logged-menu>
 

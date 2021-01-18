@@ -19,6 +19,7 @@ export class ChatComponent implements OnInit {
 
   channel:any = null;
   chat:any = {};
+  friend_list:any = [];
   message:string = "";
   messages:any = [];
   destinatario:any = {};
@@ -37,6 +38,9 @@ export class ChatComponent implements OnInit {
               private route: ActivatedRoute) {
 
     this.user = this.userService.getAuthUser();
+    this.friend_list = this.userService.getLocalFriends();
+
+    console.log(this.friend_list);
 
   }
 
@@ -62,7 +66,7 @@ export class ChatComponent implements OnInit {
 
           this.getMessages();
 
-          Pusher.logToConsole = true;
+          Pusher.logToConsole = false;
 
           let pusher = new Pusher(environment.pusher_app_key, {
             cluster: environment.pusher_app_cluster
@@ -164,4 +168,28 @@ export class ChatComponent implements OnInit {
     if(event.code == "Enter")
       this.sendMessage(this.message);
   }
+
+  addFriend(destinatario) {
+    let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
+
+    this.userService.addFriend(destinatario.id).then((data:any) => {
+      loading.close();
+      this.listFriends();
+    }).catch((err:any) => loading.close());
+  }
+
+  listFriends() {
+    this.userService.listFriends().then((data:any) => {
+
+      this.userService.storeFriends(data);
+
+      this.friend_list = data;
+      console.log(data);
+    })
+  }
+
+  friendStatus(destinatario) {
+    return this.userService.verifyFriend(destinatario, this.friend_list);
+  }
+
 }
