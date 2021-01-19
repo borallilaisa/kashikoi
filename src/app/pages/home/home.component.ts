@@ -9,20 +9,47 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  user:any = {};
-  control:string = 'conversas';
 
+  control:string = 'conversas';
+  user:any = {usuario_perfil: {}};
 
   constructor(private router: Router, public userService: UserServiceService) {
-
+    this.buscaDadosUser();
     this.user = this.userService.getAuthUser();
+
   }
 
   ngOnInit(): void {
+
+
+
+  }
+
+
+  getImage() {
+    return this.user.usuario_perfil && this.user.usuario_perfil.profilePic ? this.user.usuario_perfil.profilePic : "/assets/img/profilepic.png";
+
+  }
+
+
+  buscaDadosUser() {
+    return new Promise((resolve, reject) => {
+      this.userService.getUserData().then((data: any) => {
+        this.user = data;
+        console.log(data);
+        resolve(data);
+
+      }).catch((err: any) => {
+        console.log(err);
+        reject(err);
+      })
+    })
   }
 
   openPerfil(id) {
     this.router.navigate([`/perfil/${id}`]);
   }
+
+
 
 }
