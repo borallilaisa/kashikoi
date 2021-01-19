@@ -440,6 +440,8 @@ hr{
         border-width: 10px;
         border-style: solid;
     }
+
+
     .foto-perfil{
         left: 10px;
         padding-top: 10px;
@@ -561,7 +563,21 @@ hr{
         border-radius: 50%;
         overflow: hidden;
 
+
     }
+
+      .img-perfil-amostra {
+        width: 160px;
+        height: 160px;
+        min-width: auto;
+        min-height: auto;
+        box-sizing: border-box;
+        border: 4px solid silver;
+        border-radius: 50%;
+        background-size: 160px 160px;
+        background-position: center;
+
+      }
 
     .editor {
         position: absolute;

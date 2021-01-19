@@ -38,6 +38,7 @@ export class ChatComponent implements OnInit {
               private route: ActivatedRoute) {
 
     this.user = this.userService.getAuthUser();
+    console.log(this.user);
     this.friend_list = this.userService.getLocalFriends();
 
     console.log(this.friend_list);

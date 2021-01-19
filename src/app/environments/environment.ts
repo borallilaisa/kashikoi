@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  appUrl: 'http://192.168.18.27:84/api',
-  pusher_app_id: '1133335',
-  pusher_app_key: 'b29ef6ca1f0af49201de',
-  pusher_app_secret: '48e283cc79cc6ddee747',
+  appUrl: 'http://192.168.0.105:82/api',
+  pusher_app_id: '1135448',
+  pusher_app_key: '9424a784cdc7d4687c0e',
+  pusher_app_secret: '190410ae1ac2260d4d78',
   pusher_app_cluster: 'us2'
 };
 

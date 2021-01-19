@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 col-sm-3">
                 <div id="foto-perfil">
-                    <div class='img-perfil'  [style.background]="'url('+getImage()+')'"></div>
+                  <div class='img-perfil-amostra' [style.background-image]="'url('+getImage()+')'"></div>
                 </div>
                 <br/>
                 <div class="row">
@@ -16,12 +16,12 @@
 
             <div class="col-lg-4 col-sm-4">
                 <div class="row">
-                    <span class="nome-perfil">{{user.name}}</span> 
+                    <span class="nome-perfil">{{user.name}}</span>
                 </div>
 
                 <div class="row">
                     <span class="classificacao-perfil">
-                        
+
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="row">
-                    <span class="desc-perfil" [(ngModel)]="user.usuario_perfil.textProfile">{{user.usuario_perfil.textProfile}} </span> 
+                    <span class="desc-perfil" [(ngModel)]="user.usuario_perfil.textProfile">{{user.usuario_perfil.textProfile}} </span>
                 </div>
 
             </div>
@@ -43,7 +43,7 @@
             <div class="col-lg-10 col-sm-10">
                 <div class="box-assuntos">
                     <div class="assuntos-ensinar-lista">
-                     <span >Assuntos que ensina:</span> 
+                     <span >Assuntos que ensina:</span>
                          <br/> <br/>
                          <mat-chip-list aria-label="Fish selection">
                             <mat-option *ngFor="let assuntoEnsinar of ensinar">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="assuntos-aprender-lista">
-                    <span >Assuntos que gostaria de aprender:</span> 
+                    <span >Assuntos que gostaria de aprender:</span>
                         <br/> <br/>
                         <mat-chip-list aria-label="Fish selection">
                             <mat-option *ngFor="let assuntoAprender of aprender">
