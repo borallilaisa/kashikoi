@@ -258,4 +258,13 @@ export class UserServiceService {
       }
     }
   }
+
+  checkData(key) {
+    if(window.localStorage.getItem('user')) {
+      let user:any = this.getAuthUser();
+
+      return !!user.token;
+    }
+    else return false;
+  }
 }
