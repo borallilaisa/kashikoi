@@ -1,0 +1,30 @@
+.container {
+  padding-top: 20px;
+}
+
+p {
+  margin: 0 !important;
+}
+
+p.title {
+  font-weight: bolder;
+  color: #000;
+}
+
+.new p.title {
+  font-weight: bolder;
+  color: rgb(221, 102, 0);
+}
+
+p.assunto {
+  color: rgb(221, 102, 0);
+  font-weight: bolder;
+}
+
+.col-12 > .col-lg-12 {
+  box-shadow: 0 0 4px 0px #777;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

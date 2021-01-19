@@ -68,4 +68,15 @@ export class ChatService {
         .subscribe((data:any) => resolve(data), err => reject(err))
     })
   }
+
+  startChatByFriend(friend_id) {
+    let user:any = this.userService.getAuthUser();
+
+    return new Promise((resolve, reject) => {
+
+      this.http.post( `${environment.appUrl}/chat/amigo/${friend_id}/${user.id}?token=${user.token}`, {})
+        .subscribe((data:any) => resolve(data), (err:any) => reject(err));
+
+    });
+  }
 }

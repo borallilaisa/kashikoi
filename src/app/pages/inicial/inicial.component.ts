@@ -46,6 +46,7 @@ export class InicialComponent implements OnInit {
         this.userService.login(this.user).then((data:any) => {
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('user', JSON.stringify(data));
+          this.listFriends();
           this.loading = false;
 
           if(data.level == 1)
@@ -65,10 +66,16 @@ export class InicialComponent implements OnInit {
     })
   }
 
+  listFriends() {
+    this.userService.listFriends().then((data:any) => {
+      this.userService.storeFriends(data);
+    });
+  }
+
   changeBox() {
 
 
-        if(!this.open){
+        if(!this.open) {
 
           this.open = !this.open;
 

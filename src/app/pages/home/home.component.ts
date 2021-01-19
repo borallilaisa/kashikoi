@@ -9,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-
+  user:any = {};
   control:string = 'conversas';
-  user:any = {usuario_perfil: {}};
+  friend_list:any = [];
 
-  constructor(private router: Router, public userService: UserServiceService) {
-    this.buscaDadosUser();
+  constructor(private router: Router,
+              public userService: UserServiceService) {
+
     this.user = this.userService.getAuthUser();
+    this.friend_list = this.userService.getLocalFriends();
 
   }
 
@@ -50,6 +52,27 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`/perfil/${id}`]);
   }
 
+  listFriends() {
+    this.userService.listFriends().then((data:any) => {
 
+      this.userService.storeFriends(data);
+
+      this.friend_list = data;
+
+    })
+  }
+
+  friendStatus(destinatario) {
+    if(this.friend_list.length == 0)
+      return "not_friend";
+    else {
+      let aux:any = this.friend_list.filter(e => e.id_usuario_1 == destinatario.id || e.id_usuario_2 == destinatario.id);
+
+      if(aux.length == 0)
+        return "not_friend";
+      else
+        return aux[0].ativa ? "friend" : "sent_request";
+    }
+  }
 
 }

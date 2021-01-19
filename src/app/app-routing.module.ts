@@ -18,25 +18,28 @@ import {ControlarDenunciaComponent} from "./pages/adm/controlar-denuncia/control
 import {CaixaDeContatoComponent} from "./pages/adm/caixa-de-contato/caixa-de-contato.component";
 import {Error404Component} from "./pages/error404/error404.component";
 import {AjudaComponent} from "./pages/ajuda/ajuda.component";
+import {IsLoggedGuardGuard} from "./guards/is-logged/is-logged-guard.guard";
+import {IntroIsLoggedGuard} from "./guards/intro-is-logged/intro-is-logged.guard";
+import {IsAdminGuard} from "./guards/is-admin/is-admin.guard";
 
 
 const routes: Routes = [
 
-    {path:"inicio", component: HomeComponent},
-    {path:"selecionar-assuntos", component: SearchAssuntosComponent},
-    {path:"editar-perfil", component: EditarperfilComponent},
-    {path:"", component: InicialComponent},
-    {path:"perfil/:id", component: PerfilPessoalComponent},
-    {path:"chat/:hash", component: ChatComponent},
-    {path:"denuncia/:id", component: DenunciaComponent},
-    {path:"recuperar-senha", component: RecuperarsenhaComponent},
-    {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent},
-    {path:"adm", component: PainelAdministrativoComponent},
-    {path:"ajuda", component: AjudaComponent},
-    {path:"adm/usuarios", component: ControlarUsuarioComponent},
-    {path:"adm/assuntos", component: ControlarAssuntoComponent},
-    {path:"adm/denuncias", component: ControlarDenunciaComponent},
-    {path:"adm/contato", component: CaixaDeContatoComponent},
+    {path:"", component: InicialComponent, canActivate:[IntroIsLoggedGuard]},
+    {path:"recuperar-senha", component: RecuperarsenhaComponent, canActivate:[IntroIsLoggedGuard]},
+    {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent, canActivate:[IntroIsLoggedGuard]},
+    {path:"ajuda", component: AjudaComponent, canActivate:[IntroIsLoggedGuard]},
+    {path:"inicio", component: HomeComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"selecionar-assuntos", component: SearchAssuntosComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"editar-perfil", component: EditarperfilComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"perfil/:id", component: PerfilPessoalComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"chat/:hash", component: ChatComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"denuncia/:id", component: DenunciaComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"adm", component: PainelAdministrativoComponent, canActivate:[IsAdminGuard]},
+    {path:"adm/usuarios", component: ControlarUsuarioComponent, canActivate:[IsAdminGuard]},
+    {path:"adm/assuntos", component: ControlarAssuntoComponent, canActivate:[IsAdminGuard]},
+    {path:"adm/denuncias", component: ControlarDenunciaComponent, canActivate:[IsAdminGuard]},
+    {path:"adm/contato", component: CaixaDeContatoComponent, canActivate:[IsAdminGuard]},
     {path: '404', component: Error404Component},
     {path: '**', redirectTo: '/404'}
 ];

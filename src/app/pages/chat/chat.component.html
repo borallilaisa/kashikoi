@@ -14,7 +14,8 @@
                               {{ destinatario.name }}
                             </a>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Adicionar como amigo</a>
+                              <a class="dropdown-item" href="javascript:void(0)" (click)="addFriend(destinatario)" *ngIf="friendStatus(destinatario) == 'not_friend'">Adicionar como amigo</a>
+                              <a class="dropdown-item" href="javascript:void(0)" *ngIf="friendStatus(destinatario) == 'sent_request'">Solicitação Enviada</a>
                               <a class="dropdown-item" href="javascript:void(0)" (click)="denunciar(destinatario.id)">Denunciar Pessoa</a>
 
                             </div>

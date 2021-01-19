@@ -209,4 +209,62 @@ export class UserServiceService {
     })
   }
 
+  addFriend(friend_id) {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.getAuthUser();
+
+      this.http.post(`${environment.appUrl}/user/${user.id}/add-amigo/${friend_id}?token=${user.token}`, {})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
+  listFriends() {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.getAuthUser();
+
+      this.http.get(`${environment.appUrl}/user/${user.id}/amigos?token=${user.token}`)
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
+  storeFriends(data) {
+    window.localStorage.setItem('friends', JSON.stringify(data));
+  }
+
+  getLocalFriends() {
+    if(window.localStorage.getItem('friends'))
+      return JSON.parse(window.localStorage.getItem('friends'));
+    else
+      return [];
+  }
+
+  verifyFriend(friend, friend_list) {
+
+    if(friend_list.length == 0)
+      return "not_friend";
+    else if(!friend)
+      return "not_friend";
+    else {
+      let aux:any = friend_list.filter(e => e.id_usuario_1 == friend.id || e.id_usuario_2 == friend.id);
+
+      if(aux.length == 0)
+        return "not_friend";
+      else {
+        if(aux[0].ativa == 1) return "friend";
+        else if(aux[0].ativa == 2) return "unfriend"
+        else return "sent_request";
+      }
+    }
+  }
+
+  checkData(key) {
+    if(window.localStorage.getItem('user')) {
+      let user:any = this.getAuthUser();
+
+      return !!user.token;
+    }
+    else return false;
+  }
 }
