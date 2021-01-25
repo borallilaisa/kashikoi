@@ -67,7 +67,7 @@ export class ControlarAssuntoComponent implements OnInit {
 
           let aux = this.assuntos.map(e => e.id).indexOf(data.id);
           if(aux >= 0) this.assuntos[aux] = data;
-
+          this.searchAssuntos(this.q);
 
         }).catch((err:any) => {
           console.log(err);
@@ -102,7 +102,7 @@ export class ControlarAssuntoComponent implements OnInit {
 
           let aux = this.assuntos.map(e => e.id).indexOf(data.id);
           if(aux >= 0) this.assuntos[aux] = data;
-
+          this.searchAssuntos(this.q);
 
         }).catch((err:any) => {
           console.log(err);

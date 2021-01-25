@@ -22,6 +22,7 @@ import {IsLoggedGuardGuard} from "./guards/is-logged/is-logged-guard.guard";
 import {IntroIsLoggedGuard} from "./guards/intro-is-logged/intro-is-logged.guard";
 import {IsAdminGuard} from "./guards/is-admin/is-admin.guard";
 import {WaitLoginComponent} from "./pages/wait-login/wait-login.component";
+import {HomeAdministrativaComponent} from "./pages/adm/home-administrativa/home-administrativa.component";
 
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
     {path:"perfil/:id", component: PerfilPessoalComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"chat/:hash", component: ChatComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"denuncia/:id", component: DenunciaComponent, canActivate:[IsLoggedGuardGuard]},
-    {path:"adm", component: PainelAdministrativoComponent, canActivate:[IsAdminGuard]},
+    {path:"adm", component: HomeAdministrativaComponent, canActivate:[IsAdminGuard]},
     {path:"adm/usuarios", component: ControlarUsuarioComponent, canActivate:[IsAdminGuard]},
     {path:"adm/assuntos", component: ControlarAssuntoComponent, canActivate:[IsAdminGuard]},
     {path:"adm/denuncias", component: ControlarDenunciaComponent, canActivate:[IsAdminGuard]},

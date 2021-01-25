@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <span>Assuntos Mais Populares</span>
+    <div class="chart">
+      <canvas *ngIf="data_graph.length > 0" baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [colors]="pieChartColors"
+              [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>
