@@ -49,7 +49,7 @@ export class ControlarDenunciaComponent implements OnInit {
 
     return moment(date, 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm')
   }
-
+/*
   softdeleteUser(id){
     Swal.fire({
       title: 'Você tem certeza de que deseja bloquear esse usuário?',
@@ -70,56 +70,90 @@ export class ControlarDenunciaComponent implements OnInit {
 
         }).catch((err:any) => {
           console.log(err);
-
-
         })
-
         Swal.fire(
           'Bloqueado!',
           'Esse usuário foi bloqueado com sucesso!.',
           'success'
-
         )
 
       }
     })
   }
+*/
+
 
   confirmDenuncia(denuncia) {
-    if(confirm()) {
+    Swal.fire({
+      title: 'Você tem certeza de que deseja confirmar essa denuncia? O usuário será bloqueado',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dd3333',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, bloquear!'
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-      let loading: any = Swal.fire({didOpen: () => Swal.showLoading()});
 
-      this.denunciaService.confirmDenuncia(denuncia.id).then((data:any) => {
 
-        loading.close();
-        Swal.fire('Sucesso!', 'Denuncia confirmada com sucesso!', 'success');
-        this.searchDenuncias(this.q);
+        this.denunciaService.confirmDenuncia(denuncia.id).then((data:any) => {
+          console.log(data);
+          this.searchDenuncias(this.q);
 
-      }).catch((err:any) => {
-        loading.close();
-        Swal.fire('Atenção!', 'Erro ao confirmar denuncia!', 'error');
-      })
+
+        }).catch((err:any) => {
+          console.log(err);
+
+        })
+        Swal.fire(
+          'Pronto!',
+          'Essa denuncia foi registrada e o usuário foi bloqueado com sucesso!.',
+          'success'
+
+      )
+
+
+
+      }
+    })
+
     }
-  }
+
 
   ignoreDenuncia(denuncia){
+    Swal.fire({
+      title: 'Você tem certeza de que deseja ignorar essa denuncia?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dd3333',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, bloquear!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.denunciaService.ignoreDenuncia(denuncia.id).then((data:any) => {
 
-    if(confirm('Deseja ignorar esta denuncia?')) {
+         console.log(data);
+          this.searchDenuncias(this.q);
 
-      let loading: any = Swal.fire({didOpen: () => Swal.showLoading()});
+        }).catch((err:any) => {
+          console.log(err)
+        })
 
-      this.denunciaService.ignoreDenuncia(denuncia.id).then((data:any) => {
 
-        loading.close();
-        Swal.fire('Sucesso!', 'Denuncia confirmada com sucesso!', 'success');
-        this.searchDenuncias(this.q);
+         Swal.fire(
+          'Pronto!',
+          'Essa denuncia foi registrada e o usuário foi bloqueado com sucesso!.',
+          'success'
 
-      }).catch((err:any) => {
-        loading.close();
-        Swal.fire('Atenção!', 'Erro ao confirmar denuncia!', 'error');
-      })
-    }
+        )
+
+
+
+      }
+    })
+
 
   }
 

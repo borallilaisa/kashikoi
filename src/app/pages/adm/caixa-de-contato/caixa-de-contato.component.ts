@@ -57,20 +57,22 @@ export class CaixaDeContatoComponent implements OnInit {
 
   gravarMensagem(respostaMensagem, selected_contato){
     let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
+
     this.contatoService.enviarMensagem(respostaMensagem, selected_contato).then((data:any) => {
-      this.contato = data;
+      console.log(data);
 
       loading.close();
 
-      Swal.fire('Sucesso!', 'Mensagem enviada com sucesso!', 'success');
+      Swal.fire('Sucesso!', 'Informações salvas com sucesso!', 'success');
 
-      this.searchContato();
+
 
     }).catch((err:any) => {
       console.log(err);
+      loading.close();
       Swal.fire('Erro!', 'Não foi possível responder essa mensagem!', 'error');
 
-      loading.close();
+
 
     })
 

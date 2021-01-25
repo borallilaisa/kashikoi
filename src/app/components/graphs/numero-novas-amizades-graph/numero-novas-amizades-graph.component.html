@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <span>Número de Novas Amizades</span>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>
+
