@@ -53,6 +53,18 @@ export class UserServiceService {
 
   }
 
+  loginWithToken(token) {
+    return new Promise((resolve, reject) =>{
+      this.http.post(`${environment.appUrl}/login/token/${token}`, {}).subscribe((data:any)=> {
+
+        resolve(data);
+
+      }, (err) =>{
+        reject(err);
+      });
+    })
+  }
+
   logOut() {
 
     return new Promise((resolve, reject) =>{

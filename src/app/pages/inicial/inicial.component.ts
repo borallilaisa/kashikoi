@@ -7,7 +7,9 @@ import { ValidationService } from '../../services/validation.service';
 import {ContatoService} from '../../services/contato.service';
 import * as $ from 'jquery';
 import Swal from "sweetalert2";
-
+import {environment} from "../../environments/environment";
+import {EMPTY, from, of} from "rxjs";
+import {concatMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-inicial',
@@ -23,6 +25,8 @@ export class InicialComponent implements OnInit {
   user:any = { email: "admin", senha: "admin@123" };
   message: string;
   public loading = false;
+
+  back_url:string = environment.authUrl;
 
   constructor(public userService: UserServiceService,
               public contatoService: ContatoService,
@@ -217,6 +221,10 @@ export class InicialComponent implements OnInit {
 
         setTimeout(() => this.errors.length == 0 ? resolve(user) : reject(user));
     })
+  }
+
+  facebookLogin() {
+
   }
 
 }

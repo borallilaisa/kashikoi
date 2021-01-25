@@ -43,8 +43,8 @@ import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pes
 import { Error404Component } from './pages/error404/error404.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationCompleteComponent } from './components/modal/notification-complete/notification-complete.component';
-
-
+import {environment} from "./environments/environment";
+import { WaitLoginComponent } from './pages/wait-login/wait-login.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +78,8 @@ import { NotificationCompleteComponent } from './components/modal/notification-c
     EncontrarPessoasModalComponent,
     Error404Component,
     NotificationsComponent,
-    NotificationCompleteComponent
+    NotificationCompleteComponent,
+    WaitLoginComponent
 
   ],
     imports: [
@@ -102,7 +103,9 @@ import { NotificationCompleteComponent } from './components/modal/notification-c
         }),
 
     ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
