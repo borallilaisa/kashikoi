@@ -21,6 +21,7 @@ import {AjudaComponent} from "./pages/ajuda/ajuda.component";
 import {IsLoggedGuardGuard} from "./guards/is-logged/is-logged-guard.guard";
 import {IntroIsLoggedGuard} from "./guards/intro-is-logged/intro-is-logged.guard";
 import {IsAdminGuard} from "./guards/is-admin/is-admin.guard";
+import {WaitLoginComponent} from "./pages/wait-login/wait-login.component";
 import {HomeAdministrativaComponent} from "./pages/adm/home-administrativa/home-administrativa.component";
 
 
@@ -41,6 +42,7 @@ const routes: Routes = [
     {path:"adm/assuntos", component: ControlarAssuntoComponent, canActivate:[IsAdminGuard]},
     {path:"adm/denuncias", component: ControlarDenunciaComponent, canActivate:[IsAdminGuard]},
     {path:"adm/contato", component: CaixaDeContatoComponent, canActivate:[IsAdminGuard]},
+    {path:'oauth/login/:token', component: WaitLoginComponent},
     {path: '404', component: Error404Component},
     {path: '**', redirectTo: '/404'}
 ];

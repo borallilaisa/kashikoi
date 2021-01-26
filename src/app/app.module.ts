@@ -43,6 +43,7 @@ import { EncontrarPessoasModalComponent } from './components/modal/encontrar-pes
 import { Error404Component } from './pages/error404/error404.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationCompleteComponent } from './components/modal/notification-complete/notification-complete.component';
+import { WaitLoginComponent } from './pages/wait-login/wait-login.component';
 import { HomeAdministrativaComponent } from './pages/adm/home-administrativa/home-administrativa.component';
 import { ChartsModule } from 'ng2-charts';
 import { NumeroConversaDiaGraphComponent } from './components/graphs/numero-conversa-dia-graph/numero-conversa-dia-graph.component';
@@ -51,7 +52,6 @@ import { NumeroNovosUsuariosGraphComponent } from './components/graphs/numero-no
 import { NumeroDeDenunciasGraphComponent } from './components/graphs/numero-de-denuncias-graph/numero-de-denuncias-graph.component';
 import { AssuntosMaisPopularesGraphComponent } from './components/graphs/assuntos-mais-populares-graph/assuntos-mais-populares-graph.component';
 import { TotalConversasTrimestreGraphComponent } from './components/graphs/total-conversas-trimestre-graph/total-conversas-trimestre-graph.component';
-
 
 @NgModule({
   declarations: [
@@ -86,6 +86,7 @@ import { TotalConversasTrimestreGraphComponent } from './components/graphs/total
     Error404Component,
     NotificationsComponent,
     NotificationCompleteComponent,
+    WaitLoginComponent,
     HomeAdministrativaComponent,
     NumeroConversaDiaGraphComponent,
     NumeroNovasAmizadesGraphComponent,
@@ -117,7 +118,9 @@ import { TotalConversasTrimestreGraphComponent } from './components/graphs/total
       ChartsModule,
 
     ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
