@@ -4,6 +4,7 @@ import * as moment from "moment";
 import {ChartOptions, ChartType} from "chart.js";
 import {Label} from "ng2-charts";
 import * as pluginDataLabels from "chart.js";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-assuntos-mais-populares-graph',
@@ -15,6 +16,7 @@ export class AssuntosMaisPopularesGraphComponent implements OnInit {
   public pieChartLabels:any = [];
 
   public pieChartData: number[] = [];
+  back_url:string = environment.authUrl;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,

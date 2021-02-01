@@ -3,6 +3,7 @@ import * as pluginDataLabels from "chart.js";
 import * as moment from "moment";
 import {DashboardService} from "../../../services/dashboard.service";
 import {ChartOptions, ChartType} from "chart.js";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-numero-novos-usuarios-graph',
@@ -13,6 +14,7 @@ export class NumeroNovosUsuariosGraphComponent implements OnInit {
   public barChartData:any = [
     { data: [], label: 'Número de novos usuários cadastrados essa semana' },
   ];
+  back_url:string = environment.authUrl;
   public barChartLabels:any = [];
   public barChartOptions: ChartOptions = {
     responsive: true,

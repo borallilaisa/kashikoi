@@ -7,10 +7,10 @@
     <!-- Navbar -->
     <div class="listaUsuarios">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="col-lg-12 col-md-10 col-sm-10 col-10">
          <div class="barraPesquisa">
             <div class="row">
-                <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+                <div class="col-lg-11 col-md-9 col-sm-9 col-9">
                   <form>
                     <div class="input-group no-border">
                       <input type="text" value="" (keypress)="validateKeyPress($event)" class="form-control" name="q" [(ngModel)]="q" placeholder="Encontrar usuário...">
@@ -32,7 +32,7 @@
          <div class="tabelaUsuarios">
             <div class="content">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="card card-plain">
                       <div class="card-body">
                         <div class="table-responsive">
@@ -41,9 +41,8 @@
                               <th>Id</th>
                               <th>Nome</th>
                               <th>Email</th>
-                              <th>Status</th>
-                              <th>Bloqueado Em</th>
-                              <th>Data de Cadastro</th>
+                              <th class="d-none d-xl-block">Bloqueado Em</th>
+                              <th class="d-none d-xl-block">Data de Cadastro</th>
                               <th class="text-right">
 
                               </th>
@@ -58,16 +57,14 @@
                                 </td>
                                 <td>
                                   {{usuario.email}}
-                                </td>
-                                <td>
-                                  {{usuario.usuario_perfil ? usuario.usuario_perfil.status : ""}}
-                                </td>
+                                </td >
 
-                                <td [ngClass]="{'blocked': usuario.deleted_at}">
-                                  {{usuario.deleted_at ? formatDate(usuario.deleted_at) : " "}}
+                                <td class="d-none d-xl-block">
+                                <span [ngClass]="{'blocked': usuario.deleted_at}">  {{usuario.deleted_at ? formatDate(usuario.deleted_at) : " "}}
+                                  </span>
 
                                 </td>
-                                <td>
+                                <td class="d-none d-xl-block">
                                   {{usuario.usuario_perfil  ? formatDate(usuario.usuario_perfil.created_at) : " "}}
 
                                 </td>

@@ -69,6 +69,15 @@ export class ChatService {
     })
   }
 
+  sendScore(id_destinatario, id_remetente, score) {
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.userService.getAuthUser();
+      this.http.post(`${environment.appUrl}/chat/remetente/${id_remetente}/destinatario/${id_destinatario}/save-score?token=${user.token}`, {score: score})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+  }
+
   startChatByFriend(friend_id) {
     let user:any = this.userService.getAuthUser();
 

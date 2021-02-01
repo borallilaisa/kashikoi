@@ -86,6 +86,43 @@ export class ControlarAssuntoComponent implements OnInit {
     })
 
   }
+
+  reativarAssunto(assunto){
+    Swal.fire({
+      title: 'Você deseja reativar esse assunto?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, ativar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.buscaAssuntos.reativarAssunto(assunto.id).then((data:any) => {
+
+          let aux = this.assuntos.map(e => e.id).indexOf(data.id);
+          if(aux >= 0) this.assuntos[aux] = data;
+          this.searchAssuntos(this.q);
+
+        }).catch((err:any) => {
+          console.log(err);
+
+
+        })
+
+        Swal.fire(
+          'Aprovado!',
+          'Esse assunto agora está disponivel para seus usuários!.',
+          'success'
+
+        )
+
+      }
+    })
+
+  }
+
   inativarAssunto(assunto){
     Swal.fire({
       title: 'Você tem certeza de gostaria de inativar esse assunto?',

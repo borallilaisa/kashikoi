@@ -4,6 +4,7 @@ import {ChartOptions, ChartType} from "chart.js";
 import {Color} from "ng2-charts";
 import * as pluginAnnotations from "chart.js";
 import * as moment from "moment";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-numero-de-denuncias-graph',
@@ -16,6 +17,7 @@ export class NumeroDeDenunciasGraphComponent implements OnInit {
     { data: [], label: 'Mensagens trocadas durante a semana' },
   ];
   public lineChartLabels:any = [];
+  back_url:string = environment.authUrl;
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {

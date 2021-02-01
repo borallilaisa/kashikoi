@@ -1,13 +1,13 @@
 <app-logged-menu>
   <div class="row justify-content-center">
-    <div class="col-lg-10 col-sm-10">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
     <div  id="denuncia">
         <br/>     <br/>
         <form (submit)="enviarDenuncia(denuncia)">
             <span class="title">Denunciar Usuário</span>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-10 col-sm-10">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                         <label>Usuário Denunciado</label>
                         <input type="text" class="form-control" [(ngModel)]="denunciado.name" name="nome_denunciado" id="exampleInputEmail1" disabled>
 
@@ -15,14 +15,14 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-10 col-sm-10">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                         <label>Motivo</label>
                         <input type="text" [(ngModel)]="denuncia.motivo" name="denuncia_motivo" class="form-control">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-10 col-sm-10">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                         <label>Mais informações</label>
                         <textarea class="form-control" [(ngModel)]="denuncia.observacao" name="denuncia_info"id="exampleFormControlTextarea1" rows="3"></textarea>
 
@@ -30,7 +30,7 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-lg-10 col-sm-10">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
                 </div>

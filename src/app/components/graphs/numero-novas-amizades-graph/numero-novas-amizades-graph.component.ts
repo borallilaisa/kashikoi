@@ -4,6 +4,7 @@ import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
 import {Label} from "ng2-charts";
 import * as pluginDataLabels from "chart.js";
 import * as moment from "moment";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-numero-novas-amizades-graph',
@@ -15,6 +16,7 @@ export class NumeroNovasAmizadesGraphComponent implements OnInit {
     { data: [], label: 'Número de novas amizades durante a semana' },
   ];
   public barChartLabels:any = [];
+  back_url:string = environment.authUrl;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.

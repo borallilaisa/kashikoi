@@ -7,6 +7,7 @@ import {UserServiceService} from "../../services/user-service.service";
 import * as moment from "moment";
 import {ActivatedRoute, Router} from "@angular/router";
 import {switchAll} from "rxjs/operators";
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-chat',
@@ -19,6 +20,7 @@ export class ChatComponent implements OnInit {
 
   channel:any = null;
   chat:any = {};
+  totalstar = 5;
   friend_list:any = [];
   message:string = "";
   messages:any = [];
@@ -31,6 +33,9 @@ export class ChatComponent implements OnInit {
     total: 10,
     max: 10
   }
+
+
+
 
   constructor(public chatService: ChatService,
               public userService: UserServiceService,
@@ -46,6 +51,8 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
 
     this.route.paramMap.subscribe(params => {
       let hash = params.get("hash");
@@ -143,6 +150,20 @@ export class ChatComponent implements OnInit {
 
   denunciar(idDenunciado){
     this.router.navigate([`/denuncia/${idDenunciado}`]);
+  }
+
+
+
+
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+      let newValue:any = $event.newValue;
+      /*
+      Checked Color: ${$event.starRating.checkedcolor},
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);*/
+    this.chatService.sendScore(this.remetente.id, this.destinatario.id, newValue).then((data) => {
+      console.log(data);
+    })
+
   }
 
   groupBy(xs, key) {

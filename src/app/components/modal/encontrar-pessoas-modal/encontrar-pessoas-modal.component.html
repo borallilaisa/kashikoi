@@ -30,8 +30,13 @@
       </div>
       <div class="container" *ngIf="users.length > 0" style="padding-top: 20px">
         <div class="row" *ngFor="let user_item of users" style="padding-top: 2px; padding-bottom: 2px">
-          <div class="col-8">
+          <div class="col-4">
             {{ user_item.usuario.name }}
+          </div>
+          <div class="col-4">
+            <star-rating value="{{ user_item.usuario.usuario_perfil.score }}" totalstars="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly></star-rating>
+
+
           </div>
           <div class="col-4">
             <button class="btn btn-success btn-block" (click)="startChat(user_item.usuario.id)" data-dismiss="modal">Iniciar Chat</button>

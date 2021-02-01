@@ -52,7 +52,7 @@ import { NumeroNovosUsuariosGraphComponent } from './components/graphs/numero-no
 import { NumeroDeDenunciasGraphComponent } from './components/graphs/numero-de-denuncias-graph/numero-de-denuncias-graph.component';
 import { AssuntosMaisPopularesGraphComponent } from './components/graphs/assuntos-mais-populares-graph/assuntos-mais-populares-graph.component';
 import { TotalConversasTrimestreGraphComponent } from './components/graphs/total-conversas-trimestre-graph/total-conversas-trimestre-graph.component';
-
+import { RatingModule } from 'ng-starrating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +116,7 @@ import { TotalConversasTrimestreGraphComponent } from './components/graphs/total
             tertiaryColour: '#ffffff'
         }),
       ChartsModule,
+      RatingModule,
 
     ],
   providers: [

@@ -32,7 +32,7 @@
     <div class="tabelaAssuntos">
       <div class="content">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card card-plain">
               <div class="card-body">
                 <div class="table-responsive">
@@ -40,10 +40,9 @@
                     <thead class=" text-primary">
                     <th>Id</th>
                     <th>Titulo</th>
-
-                    <th>Status De Aprovação</th>
-                    <th>Data de Cadastro</th>
-                    <th>Inativado em</th>
+                    <th >Status De Aprovação</th>
+                    <th >Data de Cadastro</th>
+                    <th class="d-none d-xl-block">Inativado em</th>
                     <th class="text-right">
 
                     </th>
@@ -61,21 +60,26 @@
                         {{assunto.status ? 'Aprovada' : 'Pendente'}}
                       </td>
 
-                      <td>
+                      <td >
                         {{assunto.created_at  ? formatDate(assunto.created_at ) : " "}}
 
                       </td>
-                      <td>
+                      <td class="d-none d-xl-block">
                         {{assunto.deleted_at  ? formatDate(assunto.deleted_at ) : " "}}
 
                       </td>
                       <td class="text-right">
                         <button type="button" rel="tooltip" title="aprovar assunto" class="btn btn-success btn-icon btn-sm " (click)="aprovarAssunto(assunto)">
-                          <i class="nc-icon nc-check-2"></i>
+                          <i class="nc-icon nc-simple-add"></i>
                         </button>
                         <button type="button" rel="tooltip" title="inativar assunto" class="btn btn-danger btn-icon btn-sm " (click)="inativarAssunto(assunto)">
                           <i class="nc-icon nc-simple-remove"></i>
                         </button>
+                        <button type="button" rel="tooltip" title="reativar assunto" class="btn btn-info btn-icon btn-sm " (click)="reativarAssunto(assunto)">
+                          <i class="nc-icon nc-check-2"></i>
+
+                        </button>
+
                       </td>
                     </tr>
                     </tbody>

@@ -13,7 +13,11 @@
                   [chartType]="lineChartType"
                   [plugins]="lineChartPlugins"
                   (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
+                  (chartClick)="chartClicked($event)">
+
+          </canvas>
+
+          <a mat-button mat-raised-button color="primary" [href]="back_url+'/print/numero-conversas-dia'">Gerar PDF</a>
         </div>
       </div>
 

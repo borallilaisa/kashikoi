@@ -3,6 +3,7 @@ import {DashboardService} from "../../../services/dashboard.service";
 import {ChartOptions, ChartType} from "chart.js";
 import * as pluginDataLabels from "chart.js";
 import * as moment from "moment";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-total-conversas-trimestre-graph',
@@ -14,7 +15,7 @@ export class TotalConversasTrimestreGraphComponent implements OnInit {
   public pieChartLabels:any = [];
 
   public pieChartData: number[] = [];
-
+  back_url:string = environment.authUrl;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,

@@ -6,7 +6,7 @@
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="userChatImg" *ngIf="destinatario.id">
-                              <img [src]='destinatario.usuario_perfil.profilePic' width='60' height='60'>
+                              <img [src]='destinatario.usuario_perfil.profilePic ? destinatario.usuario_perfil.profilePic : "/assets/img/profilepic.png"' width='60' height='60'>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
@@ -17,6 +17,7 @@
                               <a class="dropdown-item" href="javascript:void(0)" (click)="addFriend(destinatario)" *ngIf="friendStatus(destinatario) == 'not_friend'">Adicionar como amigo</a>
                               <a class="dropdown-item" href="javascript:void(0)" *ngIf="friendStatus(destinatario) == 'sent_request'">Solicitação Enviada</a>
                               <a class="dropdown-item" href="javascript:void(0)" (click)="denunciar(destinatario.id)">Denunciar Pessoa</a>
+                              <a class="dropdown-item" href="javascript:void(0)"  data-toggle="modal" data-target="#exampleModal">Avaliar Pessoa</a>
 
                             </div>
                         </li>
@@ -62,6 +63,25 @@
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary" (click)="sendMessage(message)" type="button">Enviar</button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dê uma nota à esse usuário:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div style="text-align:center">
+                  <star-rating value="5" totalstars={{totalstar}} checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
                 </div>
               </div>
             </div>

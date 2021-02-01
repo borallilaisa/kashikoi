@@ -92,6 +92,18 @@ export class UserServiceService {
 
   }
 
+  getScore() {
+
+    let user:any = this.getAuthUser();
+
+    return new Promise((resolve, reject) => {
+      this.http.get( `${environment.appUrl}/user/retorna-score?token=${user.token}`)
+        .subscribe((data:any) => resolve(data), (err:any) => reject(err));
+
+    })
+
+  }
+
   registerInfoPerfil(aux_user) {
 
     return new Promise((resolve, reject) =>{

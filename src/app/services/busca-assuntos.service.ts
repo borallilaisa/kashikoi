@@ -35,6 +35,17 @@ export class BuscaAssuntosService {
 
   }
 
+  reativarAssunto(id){
+
+    return new Promise((resolve, reject) => {
+
+      let user:any = this.userService.getAuthUser();
+      this.http.post(`${environment.appUrl}/assunto/ativar-assunto?token=${user.token}`, {id: id})
+        .subscribe((data:any) => resolve(data), err => reject(err))
+    })
+
+  }
+
   softDeleteAssunto(id){
     return new Promise((resolve, reject) => {
       let user:any = this.userService.getAuthUser();

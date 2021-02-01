@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  user:any = {};
+  user:any = {usuario_perfil: {}};
   control:string = 'conversas';
   friend_list:any = [];
 
@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.buscaDadosUser();
+    //this.getScore();
 
 
   }
@@ -33,6 +35,19 @@ export class HomeComponent implements OnInit {
 
   }
 
+  getScore(){
+    return new Promise((resolve, reject) => {
+      this.userService.getScore().then((data: any) => {
+        this.user = data;
+        console.log(data);
+        resolve(data);
+
+      }).catch((err: any) => {
+        console.log(err);
+        reject(err);
+      })
+    })
+  }
 
   buscaDadosUser() {
     return new Promise((resolve, reject) => {

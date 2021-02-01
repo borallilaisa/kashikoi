@@ -4,6 +4,7 @@ import {Color, Label} from "ng2-charts";
 import * as pluginAnnotations from "chart.js";
 import {DashboardService} from "../../../services/dashboard.service";
 import * as moment from "moment";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-numero-conversa-dia-graph',
@@ -15,6 +16,7 @@ export class NumeroConversaDiaGraphComponent implements OnInit {
   public lineChartData:any = [
     { data: [], label: 'Número de denuncias registradas durante a semana' },
   ];
+  back_url:string = environment.authUrl;
   public lineChartLabels:any = [];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
