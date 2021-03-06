@@ -1,0 +1,85 @@
+<app-logged-menu>
+  <br/> 
+<div class="col-lg-10 col-sm-10"> 
+  
+  <nav>
+        <div class="nav nav-tabs" id="myTab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Dados Pessoais</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Assuntos</a>
+         
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <br/>
+            <div id="perfil-form">
+                <form>
+                 <div class="row">
+                     <div class="col-lg-4 col-sm-4">
+                         <div id="foto-perfil">
+                             <div class='img-perfil' (click)="fileInput.click()" [style.background]="'url('+getImage()+')'"></div>
+                             <input type="file" #fileInput (change)="onFileChanged($event)" style="display:none" class="btn-fotoperfil">
+                                 <div class="editor">
+                                     <a href="javascript:void(0)"><i class="fa fa-edit"> <span>edite</span></i></a>
+                                 </div>
+                         </div>
+                     </div>
+                 </div>
+                     <div class="row">
+                     <div class="col-lg-10 col-sm-10">
+                     <div class="form-group">
+                       <label for="exampleFormControlInput1">Nome Completo</label>
+                       <input type="text" class="form-control" name="nome" [(ngModel)]="user.name" id="exampleFormControlInput1">
+                     </div>
+                     </div>
+         
+                 </div>
+                 <div class="row">
+                     <div class="col-lg-10 col-sm-10">
+                     <div class="form-group">
+                       <label for="exampleFormControlTextarea1">Biografia</label>
+                       <textarea class="form-control" id="exampleFormControlTextarea1" name="biografia" [(ngModel)]="user.usuario_perfil.textProfile" rows="3" placeholder="Faça uma pequena descrição sobre você...."></textarea>
+                     </div>
+                     </div>
+                 </div>
+         
+                 <div class="row">
+                     <div class="col-lg-4 col-sm-4">
+                     <div class="form-group">
+                         <label for="exampleInputEmail1">Celular</label>
+                         <input type="phone" class="form-control" id="exampleInputEmail1" [brmasker]="{phone: true}" name="celular" [(ngModel)]="user.usuario_perfil.phone" aria-describedby="emailHelp "placeholder="(99) 99999-9999">
+                        
+                       </div>
+                     </div>
+                     <div class="col-lg-4 col-sm-4">
+         
+                       <div class="form-group">
+                         <label for="exampleInputEmail1">Email </label>
+                         <input type="email" class="form-control" id="exampleInputEmail1" name="email" [(ngModel)]="user.email" aria-describedby="emailHelp" placeholder="name@example.com">
+                         
+                       </div>
+                     </div>
+                 </div>
+         
+                 <div class="row">
+                     <div class="col-lg-10 col-sm-10">
+                     <div class="form-group">
+                         <button type="button" class="btn btn-primary btn-lg corentrar" (click)="registraDados(user)"> Salvar Informações</button>
+                     </div>
+                     </div>
+                 </div>
+                       
+                       
+                   </form>
+                   
+             </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <app-search-assuntosonly></app-search-assuntosonly>
+        </div>
+      
+      </div>
+</div>   
+</app-logged-menu>
+

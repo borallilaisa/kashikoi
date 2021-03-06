@@ -1,0 +1,143 @@
+<br/>
+    <div class="painel-assuntos">
+      <div class="form-group">
+        <div class="container">
+          <div class="row">
+          <div class="col-lg-12 col-md-8 sm-8 painel-assuntos-aprender">
+            <br/><br/>
+                <div class="title">Que temas você gostaria de aprender?</div>
+              
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-12">
+
+                            <mat-form-field class="example-chip-list">
+                              <mat-chip-list #chipList aria-label="seleção de assuntos">
+                                <mat-chip
+                                  *ngFor="let assunto of assuntos"
+                                  [selectable]="selectable"
+                                  [removable]="removable"
+                                  (removed)="remove(assunto, assuntos)">
+                                  {{assunto}}
+                                  <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                                </mat-chip>
+                                <input
+                                  class="form-control form-assuntos"
+                                  #assuntoAprenderInput
+                                  [(ngModel)]="q"
+                                  name="q"
+                                  [formControl]="assuntosCtrl"
+                                  [matAutocomplete]="auto"
+                                  [matChipInputFor]="chipList"
+                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                  (matChipInputTokenEnd)="add($event, assuntos)"
+                                  (keyup)="searchAssuntos(q)">
+                              </mat-chip-list>
+                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event, assuntos, auto)">
+                                <mat-option *ngFor="let assunto of allAssuntos | filterAssuntos : assuntos" [value]="assunto.titulo">
+                                  {{assunto.titulo}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+
+                          </div>
+                            
+                            
+
+
+                       
+                            
+                      </div>
+                  </div>
+              </div>
+
+              
+            </div>
+        </div>
+        <br/><br/><br/>
+        <div class="painel-assuntos-ensinar">
+
+          <div class="form-group">
+            <div class="title">Que temas você sabe ensinar?</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+              
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-12 col-md-12">
+                              <div class="col-12 col-md-12">
+      
+                                <mat-form-field class="example-chip-list">
+                                    <mat-chip-list #chipListEnsinar aria-label="seleção de assuntos">
+                                      <mat-chip
+                                        *ngFor="let assunto of assuntosEnsinar"
+                                        [selectable]="selectable"
+                                        [removable]="removable"
+                                        (removed)="remove(assunto, assuntosEnsinar)">
+                                        {{assunto}}
+                                        <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                                      </mat-chip>
+                                      <input
+                                        class="form-control form-assuntos"
+                                        #assuntEnsinaroInput
+                                        [(ngModel)]="f"
+                                        name="f"
+                                        [formControl]="assuntosEnsinarCtrl"
+                                        [matAutocomplete]="autoEnsinar"
+                                        [matChipInputFor]="chipListEnsinar"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        (matChipInputTokenEnd)="add($event, assuntosEnsinar)"
+                                        (keyup)="searchAssuntos(f)">
+                                    </mat-chip-list>
+                                    <mat-autocomplete #autoEnsinar="matAutocomplete" (optionSelected)="selected($event, assuntosEnsinar, autoEnsinar)">
+                                      <mat-option *ngFor="let assunto of allAssuntos" [value]="assunto.titulo">
+                                        {{assunto.titulo}}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                                  
+      
+                                </div>
+                                  
+                                  
+      
+      
+                             
+                                  
+                            </div>
+                        </div>
+                    </div>
+      
+                  
+      
+      
+                      
+                      
+                    </div>
+                </div>
+              </div>
+      
+          
+          </div>
+
+          <button type="button" class="btn btn-primary btn-lg corentrar" (click)="assuntosRegister(assuntos, assuntosEnsinar)" > Salvar Informações</button>
+            <br/><br/>
+        </div>
+      
+
+    </div>
+
+    <div class="my-container">
+
+   
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }">
+          <div class="alert alert-success" role="alert">
+            Dados atualizados com sucesso!
+          </div>
+        </ngx-loading>
+     
+  </div>
+    </div>
+  </div>
