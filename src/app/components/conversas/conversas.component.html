@@ -5,7 +5,7 @@
     </div>
     <div class="col-sm-3 col-md-4 col-6" *ngFor="let chat of chats" (click)="openChat(chat)">
       <div class="col-lg-12">
-        <p class="title">{{ sliceMessage(user.id == chat.aluno.id ? chat.aluno.name : chat.professor.name) }}</p>
+        <p class="title">{{ sliceMessage(user.id != chat.aluno.id ? chat.aluno.name : chat.professor.name) }}</p>
         <p class="assunto">{{ chat.assunto.titulo }}</p>
         <p class="last_message" *ngIf="chat.mensagens.length > 0">
           {{ sliceMessage(chat.mensagens[0].corpoMensagem) }}

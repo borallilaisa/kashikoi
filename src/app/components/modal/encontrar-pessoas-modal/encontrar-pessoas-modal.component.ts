@@ -16,6 +16,7 @@ export class EncontrarPessoasModalComponent implements OnInit {
   user:any = {};
   selected_assunto:any = null;
   users:any = [];
+  vazio:any = false;
 
   constructor(public userService: UserServiceService,
               private router: Router,
@@ -24,6 +25,7 @@ export class EncontrarPessoasModalComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getAuthUser();
 
+
     setTimeout(() => {
       this.getAssuntos(this.assuntos);
     }, 200)
@@ -31,10 +33,25 @@ export class EncontrarPessoasModalComponent implements OnInit {
 
   getAssuntos(user) {
     this.userService.getAssuntosVinculados().then((data:any) => {
-      if(data)
+      if(data && data.length > 0){
         this.assuntos = data;
+
+      }
+
+      else {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Parece que você não tem assuntos cadastrados!',
+          footer: '<a href>Vamos cadastrar agora?</a>'
+        })
+      }
     }).catch((err:any) => {
       console.log(err);
+
+
+
     })
   }
 
@@ -42,8 +59,15 @@ export class EncontrarPessoasModalComponent implements OnInit {
 
     let loading:any = Swal.fire({didOpen: () => Swal.showLoading()})
 
+    this.vazio = false;
+
     this.userService.getUsersByAssuntos(select_assunto, selected_assunto).then((data:any) => {
       this.users = data;
+
+      if (!data || data.length == 0){
+        this.vazio = true;
+
+      }
       loading.close();
     }).catch((err:any) => loading.close());
   }

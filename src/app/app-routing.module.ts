@@ -30,7 +30,7 @@ const routes: Routes = [
     {path:"", component: InicialComponent, canActivate:[IntroIsLoggedGuard]},
     {path:"recuperar-senha", component: RecuperarsenhaComponent, canActivate:[IntroIsLoggedGuard]},
     {path:"recuperar-senha/:token", component: RecuperarsenhafinalizarComponent, canActivate:[IntroIsLoggedGuard]},
-    {path:"ajuda", component: AjudaComponent, canActivate:[IntroIsLoggedGuard]},
+    {path:"ajuda", component: AjudaComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"inicio", component: HomeComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"selecionar-assuntos", component: SearchAssuntosComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"editar-perfil", component: EditarperfilComponent, canActivate:[IsLoggedGuardGuard]},

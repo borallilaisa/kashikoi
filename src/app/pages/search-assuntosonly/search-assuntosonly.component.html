@@ -32,9 +32,10 @@
                                   [matChipInputFor]="chipList"
                                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                   (matChipInputTokenEnd)="add($event, assuntos)"
+                                  autocomplete="off"
                                   (keyup)="searchAssuntos(q)">
                               </mat-chip-list>
-                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event, assuntos, auto)">
+                              <mat-autocomplete #auto="matAutocomplete" autocomplete="off" (optionSelected)="selected($event, assuntos, assuntoAprenderInput)">
                                 <mat-option *ngFor="let assunto of allAssuntos | filterAssuntos : assuntos" [value]="assunto.titulo">
                                   {{assunto.titulo}}
                                 </mat-option>
@@ -91,8 +92,8 @@
                                         (matChipInputTokenEnd)="add($event, assuntosEnsinar)"
                                         (keyup)="searchAssuntos(f)">
                                     </mat-chip-list>
-                                    <mat-autocomplete #autoEnsinar="matAutocomplete" (optionSelected)="selected($event, assuntosEnsinar, autoEnsinar)">
-                                      <mat-option *ngFor="let assunto of allAssuntos" [value]="assunto.titulo">
+                                    <mat-autocomplete #autoEnsinar="matAutocomplete" autocomplete="off" (optionSelected)="selected($event, assuntosEnsinar, assuntEnsinaroInput)">
+                                      <mat-option *ngFor="let assunto of allAssuntos" [value]="assunto.titulo" >
                                         {{assunto.titulo}}
                                       </mat-option>
                                     </mat-autocomplete>

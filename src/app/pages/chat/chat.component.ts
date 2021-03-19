@@ -155,13 +155,20 @@ export class ChatComponent implements OnInit {
 
 
 
-  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}, close_modal:any) {
       let newValue:any = $event.newValue;
       /*
       Checked Color: ${$event.starRating.checkedcolor},
       Unchecked Color: ${$event.starRating.uncheckedcolor}`);*/
     this.chatService.sendScore(this.remetente.id, this.destinatario.id, newValue).then((data) => {
       console.log(data);
+
+      let loading =  Swal.fire(
+        'Nota registrada!'
+       )
+
+      setTimeout(() => close_modal.click(), 1000)
+
     })
 
   }

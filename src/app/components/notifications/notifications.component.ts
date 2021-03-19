@@ -70,7 +70,9 @@ export class NotificationsComponent implements OnInit {
         loading.close();
         Swal.fire('Sucesso!', `Você e ${friend.name} agora são amigos!`, 'success');
 
-        this.getNotifications();
+        this.notificationsService.setReadNotification(notification.id).then((data:any) => {
+          this.getNotifications();
+        })
         this.listFriends();
 
       }).catch((err:any) => {

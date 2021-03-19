@@ -61,11 +61,21 @@ export class InicialComponent implements OnInit {
 
         }).catch((err:any) => {
             console.log(err);
-          alert('Erro ao efetuar login');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Não foi possivel efetuar o login! Verifique seu e-mail e senha',
+
+          })
             this.loading = false;
         })
     }).catch((err:any) => {
-      alert('Erro ao efetuar login');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Não foi possivel validar sua entrada!',
+
+      })
       this.loading = false;
     })
   }
@@ -208,9 +218,10 @@ export class InicialComponent implements OnInit {
 
         }
 
-         /*if(!this.validation.passwordIsValid(user.senha))
+         if(!this.validation.passwordIsValid(user.senha))
           this.errors.push("A senha precisa ter no minimo 8 caracteres, sendo no minimo uma letra maiúscula, uma letra minuscula, um digito (0..9) e um carácter especial (@#$%^&+=)..");
-        */
+
+
 
           if(this.errors.length > 0) {
             $("#validateMessage").addClass('ativo');

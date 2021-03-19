@@ -12,7 +12,7 @@
               {{ notification.titulo }}
             </p>
           </div>
-          <div class="col-4 text-right" *ngIf="notification.tipo == 2 && friendStatus(notification.amigo) != 'friend'">
+          <div class="col-4 text-right" *ngIf="notification.tipo == 2 && friendStatus(notification.amigo) != 'friend' && friendStatus(notification.amigo) != 'block'">
             <button class="btn btn-success" (click)="confirmFriend(notification.amigo, notification)">Aceitar</button> &nbsp;
             <button class="btn btn-danger" (click)="refuseFriend(notification.amigo, notification)">Recusar</button>
           </div>

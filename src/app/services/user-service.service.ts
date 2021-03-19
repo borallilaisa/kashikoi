@@ -230,7 +230,7 @@ export class UserServiceService {
 
       this.http.get(`${environment.appUrl}/user/${user.id}/listar/${assunto}/${tipo_assunto}?token=${user.token}`)
         .subscribe((data:any) => resolve(data), err => reject(err))
-    })
+    });
   }
 
   addFriend(friend_id) {
@@ -276,7 +276,8 @@ export class UserServiceService {
       if(aux.length == 0)
         return "not_friend";
       else {
-        if(aux[0].ativa == 1) return "friend";
+        if(aux[0].bloqueio == 1)return "block"
+        else if(aux[0].ativa == 1) return "friend";
         else if(aux[0].ativa == 2) return "unfriend"
         else return "sent_request";
       }

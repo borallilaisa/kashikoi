@@ -81,8 +81,9 @@
               </div>
               <div class="modal-body">
                 <div style="text-align:center">
-                  <star-rating value="5" totalstars={{totalstar}} checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                  <star-rating value="5" totalstars={{totalstar}} checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false" (rate)="onRate($event, closeModal)"></star-rating>
                 </div>
+                <button style="display: none" #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>

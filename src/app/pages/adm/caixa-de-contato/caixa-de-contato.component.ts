@@ -64,6 +64,7 @@ export class CaixaDeContatoComponent implements OnInit {
       loading.close();
 
       Swal.fire('Sucesso!', 'Informações salvas com sucesso!', 'success');
+      this.searchContato();
 
 
 
@@ -71,7 +72,7 @@ export class CaixaDeContatoComponent implements OnInit {
       console.log(err);
       loading.close();
       Swal.fire('Erro!', 'Não foi possível responder essa mensagem!', 'error');
-
+      this.searchContato();
 
 
     })

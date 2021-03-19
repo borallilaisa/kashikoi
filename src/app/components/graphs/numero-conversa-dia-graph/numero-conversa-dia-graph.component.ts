@@ -14,7 +14,7 @@ import {environment} from "../../../environments/environment";
 export class NumeroConversaDiaGraphComponent implements OnInit {
 
   public lineChartData:any = [
-    { data: [], label: 'Número de denuncias registradas durante a semana' },
+    { data: [], label: 'Número de mensagens trocadasng durante a semana' },
   ];
   back_url:string = environment.authUrl;
   public lineChartLabels:any = [];

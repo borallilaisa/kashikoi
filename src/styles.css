@@ -67,7 +67,7 @@ label.login-box{
     min-width: auto !important;
     overflow: hidden !important;
     height: auto;
-    min-height: 530px;
+    min-height: 590px;
     border-radius: 0.5px;
     border-color: #E4CFB8;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -354,7 +354,7 @@ hr{
        }
 
        .register span{
-           font-size: 30px;
+           font-size: 20px;
            text-align: center;
            vertical-align: middle;
            margin-left: 20px;
@@ -514,6 +514,11 @@ hr{
         .footer{
           max-width: 576px;
         }
+
+      .encontrar-pessoas-modal{
+        max-width: 370px;
+        padding: 0px;
+      }
 
 
       .credits{

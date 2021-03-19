@@ -114,6 +114,8 @@ export class SearchAssuntosOnlyComponent implements OnInit {
 
   add(event: MatChipInputEvent, aux:any): void {
 
+    console.log(event)
+
     const input = event.input;
     const value = event.value;
 
@@ -127,9 +129,10 @@ export class SearchAssuntosOnlyComponent implements OnInit {
       input.value = '';
     }
 
-    this.assuntosCtrl.setValue(null);
     this.q = "";
     this.f = "";
+
+    this.assuntosCtrl.setValue(null);
   }
 
   remove(assunto: string, aux:any): void {
@@ -144,13 +147,16 @@ export class SearchAssuntosOnlyComponent implements OnInit {
   selected(event: MatAutocompleteSelectedEvent, aux:any, inputId: any): void {
 
     aux.push(event.option.viewValue);
-    inputId.nativeElement.value = '';
-    inputId.setValue(null);
+    this.q = "";
+    this.f = "";
+    inputId.value = '';
 
   }
 
   private _filter(value: string): string[] {
     let filterValue = value.toLowerCase();
+
+    console.log(this.allAssuntos)
 
     return this.allAssuntos.filter(assunto => assunto.toLowerCase().indexOf(filterValue) === 0);
   }

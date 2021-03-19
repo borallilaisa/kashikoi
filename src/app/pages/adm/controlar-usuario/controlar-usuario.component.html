@@ -41,7 +41,7 @@
                               <th>Id</th>
                               <th>Nome</th>
                               <th>Email</th>
-                              <th class="d-none d-xl-block">Bloqueado Em</th>
+                              <th>Bloqueado Em</th>
                               <th class="d-none d-xl-block">Data de Cadastro</th>
                               <th class="text-right">
 
@@ -59,7 +59,7 @@
                                   {{usuario.email}}
                                 </td >
 
-                                <td class="d-none d-xl-block">
+                                <td>
                                 <span [ngClass]="{'blocked': usuario.deleted_at}">  {{usuario.deleted_at ? formatDate(usuario.deleted_at) : " "}}
                                   </span>
 
