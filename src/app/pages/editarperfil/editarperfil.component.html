@@ -5,13 +5,13 @@
 
          <nav>
         <div class="nav nav-tabs" id="myTab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Dados Pessoais</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Assuntos</a>
+          <a class="nav-item nav-link {{ tab_control == 'nav-home' ? 'active' : ''}}" (click)="tab_control = 'nav-home'" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Dados Pessoais</a>
+          <a class="nav-item nav-link {{ tab_control == 'nav-profile' ? 'active' : ''}}" (click)="tab_control = 'nav-profile'" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Assuntos</a>
 
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="tab-pane fade {{ tab_control == 'nav-home' ? 'show active' : ''}}" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <br/>
             <div id="perfil-form">
                 <form>
@@ -76,7 +76,7 @@
              </div>
 
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade {{ tab_control == 'nav-profile' ? 'show active' : ''}}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <app-search-assuntosonly></app-search-assuntosonly>
         </div>
 

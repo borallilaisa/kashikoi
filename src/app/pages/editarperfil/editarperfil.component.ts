@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../services/user-service.service';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
@@ -13,14 +14,20 @@ export class EditarperfilComponent implements OnInit {
 
   user:any = {usuario_perfil: {}};
   public loading = false;
+  tab_control:string = 'nav-home';
 
-  constructor(public userService: UserServiceService) {
+  constructor(public userService: UserServiceService, private route: ActivatedRoute) {
     this.buscaDadosUser();
     moment.locale('pt-br');
     console.log(moment().format('LLLL'));
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      if(params.get("assunto"))
+        this.tab_control = params.get("assunto");
+    })
+
 
   }
 

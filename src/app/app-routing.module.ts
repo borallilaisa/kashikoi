@@ -34,6 +34,7 @@ const routes: Routes = [
     {path:"inicio", component: HomeComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"selecionar-assuntos", component: SearchAssuntosComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"editar-perfil", component: EditarperfilComponent, canActivate:[IsLoggedGuardGuard]},
+    {path:"editar-perfil/:assunto", component: EditarperfilComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"perfil/:id", component: PerfilPessoalComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"chat/:hash", component: ChatComponent, canActivate:[IsLoggedGuardGuard]},
     {path:"denuncia/:id", component: DenunciaComponent, canActivate:[IsLoggedGuardGuard]},

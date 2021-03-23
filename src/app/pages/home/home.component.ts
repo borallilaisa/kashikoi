@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../services/user-service.service';
 import { Router } from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,34 @@ export class HomeComponent implements OnInit {
 
   }
 
+  openModalPessoas(idbotao:any) {
+    this.userService.getAssuntosVinculados().then((data:any) => {
+      if(data && data.length > 0){
+        idbotao.click();
+
+      }
+
+      else {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Parece que você não tem assuntos cadastrados!',
+          showCloseButton: true,
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: 'Vamos cadastrar agora?',
+          cancelButtonText: 'Fechar'
+        }).then((result:any) => {
+          if(result.isConfirmed) {
+            this.router.navigate([`/editar-perfil/nav-profile`]);
+          }
+        })
+      }
+    }).catch((err:any) => {
+      console.log(err);
+    })
+  }
 
   getImage() {
     return this.user.usuario_perfil && this.user.usuario_perfil.profilePic ? this.user.usuario_perfil.profilePic : "/assets/img/profilepic.png";

@@ -1,82 +1,88 @@
 <app-logged-menu>
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
-            <div id="info-perfil">
-                <br/>
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <div id="dados">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-sm-4">
-                                            <div id="foto-perfil">
 
-                                                <div class='img-perfil-amostra' [style.background-image]="'url('+getImage()+')'"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-sm-8">
-                                        <br/>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-6" (click)="openPerfil(user.id)">
-                                                    <span class="nome-perfil">{{ user.name }}</span>  <span class="status-perfil"></span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-6">
-                                                    <a routerLink="/editar-perfil" routerLinkActive="active" class="alterar-perfil">Alterar Perfil</a>
-                                                </div>
-                                            </div>
-                                            <div class="row" *ngIf="user.usuario_perfil && user.usuario_perfil.score">
-                                                <div class="col-lg-12 col-sm-6">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+        <div id="info-perfil">
+          <br/>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                  <div id="dados">
+                    <div class="row">
+                      <div class="col-lg-4 col-sm-4">
+                        <div id="foto-perfil">
+
+                          <div class='img-perfil-amostra' [style.background-image]="'url('+getImage()+')'"></div>
+                        </div>
+                      </div>
+                      <div class="col-lg-8 col-sm-8">
+                        <br/>
+                        <div class="row">
+                          <div class="col-lg-12 col-sm-6" (click)="openPerfil(user.id)">
+                            <span class="nome-perfil">{{ user.name }}</span>  <span class="status-perfil"></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12 col-sm-6">
+                            <a routerLink="/editar-perfil" routerLinkActive="active" class="alterar-perfil">Alterar Perfil</a>
+                          </div>
+                        </div>
+                        <div class="row" *ngIf="user.usuario_perfil && user.usuario_perfil.score">
+                          <div class="col-lg-12 col-sm-6">
                                                     <span class="classificacao-perfil">
 
                                                         <star-rating value="{{ user.usuario_perfil.score }}" totalstars="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly></star-rating>
 
                                                     </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div id="search-tool">
-                                    <button type="button" class="btn btn-lg search-button" data-toggle="modal" data-target=".encontrar-pessoas-modal">Encontrar Pessoas</button>
-                                </div>
-                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    </div>
+
+
+
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div id="search-tool">
+                    <button type="button" class="btn btn-lg search-button" (click)="openModalPessoas(idbotaomodal)">Encontrar Pessoas</button>
+                    <button type="button" style="display: none" class="btn btn-lg search-button" #idbotaomodal data-toggle="modal" data-target=".encontrar-pessoas-modal">Encontrar Pessoas</button>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-  <div class="container" style="margin-top: 10px">
-    <div class="row">
-      <div class="col-sm-4">
-        <div (click)="control = 'conversas'" class="btn {{ control == 'conversas' ? 'btn-info' : 'btn-outline-info' }} btn-block">
-          Conversas
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div (click)="control = 'amigos'" class="btn {{ control == 'amigos' ? 'btn-info' : 'btn-outline-info' }} btn-block">
-          Amigos
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div (click)="control = 'notificacoes'" class="btn {{ control == 'notificacoes' ? 'btn-info' : 'btn-outline-info' }} btn-block">
-          Notificações
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="container" style="margin-top: 10px">
+      <div class="row">
+        <div class="col-sm-4">
+          <div (click)="control = 'conversas'" class="btn {{ control == 'conversas' ? 'btn-info' : 'btn-outline-info' }} btn-block">
+            Conversas
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div (click)="control = 'amigos'" class="btn {{ control == 'amigos' ? 'btn-info' : 'btn-outline-info' }} btn-block">
+            Amigos
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div (click)="control = 'notificacoes'" class="btn {{ control == 'notificacoes' ? 'btn-info' : 'btn-outline-info' }} btn-block">
+            Notificações
+          </div>
+        </div>
+      </div>
+    </div>
     <app-conversas *ngIf="user.id && control == 'conversas'" [user]="user" style="width: 100% !important;"></app-conversas>
     <app-amizades *ngIf="user.id && control == 'amigos'" [user]="user" style="width: 100% !important;"></app-amizades>
     <app-notifications *ngIf="user.id && control == 'notificacoes'" style="width: 100% !important;"></app-notifications>
 
-  <app-encontrar-pessoas-modal></app-encontrar-pessoas-modal>
+    <app-encontrar-pessoas-modal></app-encontrar-pessoas-modal>
+
+
 </app-logged-menu>
 

@@ -35,23 +35,9 @@ export class EncontrarPessoasModalComponent implements OnInit {
     this.userService.getAssuntosVinculados().then((data:any) => {
       if(data && data.length > 0){
         this.assuntos = data;
-
-      }
-
-      else {
-
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Parece que você não tem assuntos cadastrados!',
-          footer: '<a href>Vamos cadastrar agora?</a>'
-        })
       }
     }).catch((err:any) => {
       console.log(err);
-
-
-
     })
   }
 
