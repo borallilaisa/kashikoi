@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit {
 
           this.getMessages();
 
-          Pusher.logToConsole = false;
+          Pusher.logToConsole = true;
 
           let pusher = new Pusher(environment.pusher_app_key, {
             cluster: environment.pusher_app_cluster
