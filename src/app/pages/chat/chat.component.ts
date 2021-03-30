@@ -80,7 +80,12 @@ export class ChatComponent implements OnInit {
             cluster: environment.pusher_app_cluster
           });
 
+          console.log(pusher);
+
           this.channel = pusher.subscribe('chat-channel');
+
+          this.channel.connect();
+
           this.channel.bind(`${data.hash}`, (resp) => {
             this.messages.push(resp.message);
 
