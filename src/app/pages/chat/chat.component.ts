@@ -57,51 +57,53 @@ export class ChatComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       let hash = params.get("hash");
 
-      if (hash) {
+      console.log(hash);
 
-        this.chatService.openChat(hash).then((data:any) => {
+      setTimeout(() => {
+        if (hash) {
 
-          this.chat = data;
+          this.chatService.openChat(hash).then((data:any) => {
 
-          if(this.user.id == data.aluno.id) {
-            this.destinatario = data.professor;
-            this.remetente = data.aluno;
-          }
-          else {
-            this.destinatario = data.aluno;
-            this.remetente = data.professor;
-          }
+            this.chat = data;
 
-          this.getMessages();
+            if(this.user.id == data.aluno.id) {
+              this.destinatario = data.professor;
+              this.remetente = data.aluno;
+            }
+            else {
+              this.destinatario = data.aluno;
+              this.remetente = data.professor;
+            }
 
-          Pusher.logToConsole = true;
+            this.getMessages();
 
-          let pusher = new Pusher(environment.pusher_app_key, {
-            cluster: environment.pusher_app_cluster
-          });
+            Pusher.logToConsole = true;
 
-          console.log(pusher);
+            let pusher = new Pusher(environment.pusher_app_key, {
+              cluster: environment.pusher_app_cluster
+            });
 
-          this.channel = pusher.subscribe('chat-channel');
+            console.log(pusher);
 
-          this.channel.connect();
+            this.channel = pusher.subscribe('chat-channel');
 
-          this.channel.bind(`${data.hash}`, (resp) => {
-            this.messages.push(resp.message);
+            this.channel.bind(`${data.hash}`, (resp) => {
+              this.messages.push(resp.message);
 
-            setTimeout(() => {
-              this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-            }, 200)
-          });
+              setTimeout(() => {
+                this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+              }, 200)
+            });
 
-        }).catch((err:any) => {
-          Swal.fire('Atenção', 'Chat inválido', 'error')
+          }).catch((err:any) => {
+            Swal.fire('Atenção', 'Chat inválido', 'error')
+            //this.router.navigate([`/inicio`]);
+          })
+
+        } else {
           this.router.navigate([`/inicio`]);
-        })
-
-      } else {
-        this.router.navigate([`/inicio`]);
-      }
+        }
+      }, 500)
     })
   }
 
