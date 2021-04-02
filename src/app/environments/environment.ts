@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  appUrl: 'https://kashikoi-api.herokuapp.com/api',
-  authUrl: 'https://kashikoi-api.herokuapp.com',
+  appUrl: 'http://192.168.0.105:82/api',
+  authUrl: 'http://192.168.0.105:82',
   pusher_app_id: '1135450',
   pusher_app_key: '54828454c77111a4e20f',
   pusher_app_secret: 'a976c0475a82eb1b918d',
